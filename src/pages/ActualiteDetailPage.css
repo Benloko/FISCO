@@ -1,0 +1,230 @@
+.actualite-detail-page {
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+/* Back Link */
+.back-link-container {
+  padding-top: 1.8rem;
+  padding-bottom: 0.5rem;
+}
+
+.btn-back-to-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #42210B;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.btn-back-to-list:hover {
+  transform: translateX(-4px);
+  color: var(--color-gold);
+}
+
+/* Article Container */
+.article-main-container {
+  padding: 1.5rem 0 3.5rem;
+  background-color: #FFFFFF;
+}
+
+/* 2. Featured Image (Screenshot 1 & 2) */
+.article-featured-image-box {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2.2rem;
+  overflow: hidden;
+  background-color: #F4EFEA;
+}
+
+.article-featured-img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* 3. Article Content (Screenshot 2 & 3) */
+.article-content-body {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.article-headline-title {
+  color: var(--color-gold);
+  font-size: clamp(1.4rem, 2.2vw, 2.05rem);
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 1.8rem;
+}
+
+.article-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-paragraphs p {
+  font-size: 0.96rem;
+  line-height: 1.72;
+  color: #222222;
+  font-weight: 400;
+}
+
+/* 4. Share Block (Screenshot 3) */
+.article-share-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.8rem;
+}
+
+.article-share-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #42210B;
+}
+
+.article-share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.article-share-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #42210B;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.article-share-btn:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-gold);
+  color: #42210B;
+}
+
+/* Divider Line (Screenshot 3) */
+.article-section-divider {
+  border: none;
+  border-top: 1px solid #DFD8CF;
+  margin: 3.5rem 0 2.8rem;
+  width: 100%;
+}
+
+/* 5. Autres activités récentes (Screenshot 3 & 4) */
+.section-autres-activites-recentes {
+  margin-bottom: 2rem;
+}
+
+.recent-activities-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #42210B;
+  margin-bottom: 1.8rem;
+}
+
+.recent-activities-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .recent-activities-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .recent-activities-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Horizontal card matching Screenshot 3 */
+.activity-horizontal-card {
+  background-color: #FFFFFF;
+  border: 1px solid #ECE7E1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: 135px 1fr;
+  overflow: hidden;
+  min-height: 165px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-horizontal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+}
+
+.activity-card-media {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #2F1707;
+}
+
+.activity-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.activity-card-info {
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.activity-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #42210B;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.activity-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #666666;
+  margin-bottom: 0.85rem;
+}
+
+.activity-card-link-btn {
+  color: var(--color-gold);
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.activity-card-link-btn:hover {
+  transform: translateX(4px);
+  color: #B46A06;
+}
+
+.activity-card-link-btn .arrow-sym {
+  font-size: 1.05rem;
+  line-height: 1;
+}

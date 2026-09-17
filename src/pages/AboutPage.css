@@ -1,0 +1,314 @@
+/* ==========================================================
+   A PROPOS PAGE - FISCO FESTIVAL
+   Pixel-perfect match to Screenshots 1, 2, 3
+   ========================================================== */
+
+.about-page-root {
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+/* 1. HERO BANNER (Screenshot 1) */
+.about-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #2F1707;
+}
+
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 14, 5, 0.72) 0%,
+    rgba(46, 22, 7, 0.78) 100%
+  );
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #FFFFFF;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.about-hero-title {
+  font-size: clamp(2.1rem, 3.5vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.4rem;
+  color: #FFFFFF;
+}
+
+.about-hero-desc {
+  font-size: clamp(0.98rem, 1.35vw, 1.15rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.94);
+  font-weight: 400;
+}
+
+/* 2. QUI SOMMES-NOUS ? (Screenshot 1 & 2) */
+.about-who-section {
+  padding: 4.5rem 0 3.5rem;
+  background-color: #FFFFFF;
+}
+
+.about-section-heading {
+  text-align: center;
+  font-size: clamp(1.8rem, 2.6vw, 2.35rem);
+  font-weight: 800;
+  color: #42210B;
+  margin-bottom: 2.8rem;
+  letter-spacing: -0.01em;
+}
+
+.about-who-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 100%;
+}
+
+.about-who-paragraphs p {
+  font-size: 1.02rem;
+  line-height: 1.78;
+  color: #222222;
+  font-weight: 400;
+  text-align: left;
+}
+
+/* 3. EDITIONS TIMELINE & POSTER (Screenshot 2) */
+.about-editions-timeline-section {
+  padding: 3rem 0 4.5rem;
+  background-color: #FFFFFF;
+}
+
+.editions-timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.timeline-items-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+}
+
+.timeline-edition-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-edition-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+.timeline-edition-title {
+  color: var(--color-gold);
+  font-size: clamp(1.35rem, 1.8vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.2;
+  transition: color 0.15s ease;
+}
+
+.timeline-edition-arrow {
+  color: var(--color-gold);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.timeline-edition-header:hover .timeline-edition-title {
+  color: #D48B1B;
+}
+
+.timeline-edition-header:hover .timeline-edition-arrow {
+  transform: translateX(6px);
+}
+
+.timeline-edition-year {
+  color: #777777;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.timeline-edition-desc {
+  color: #222222;
+  font-size: 0.98rem;
+  line-height: 1.62;
+  font-weight: 400;
+}
+
+/* Poster column */
+.timeline-poster-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeline-poster-card {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  background-color: #E27928;
+}
+
+.timeline-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 4. CE QUE NOUS VOULONS ACCOMPLIR (Screenshot 3) */
+.about-accomplish-section {
+  padding: 3rem 0 5.5rem;
+  background-color: #FFFFFF;
+}
+
+.accomplish-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 2.6vw, 2.35rem);
+  font-weight: 800;
+  color: #42210B;
+  margin-bottom: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.accomplish-subtitle {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 3.5rem;
+  color: #3A3A3A;
+  font-size: 0.98rem;
+  line-height: 1.68;
+  font-weight: 400;
+}
+
+.accomplish-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.accomplish-card {
+  background-color: #FFFFFF;
+  border: 1px solid #ECE7E1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accomplish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+}
+
+.accomplish-card-media {
+  width: 100%;
+  height: 165px;
+  overflow: hidden;
+  background-color: #2F1707;
+}
+
+.accomplish-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.accomplish-card-body {
+  padding: 1.6rem 1.65rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.accomplish-card-title {
+  color: #42210B;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 0.9rem;
+}
+
+.accomplish-card-desc {
+  color: #555555;
+  font-size: 0.88rem;
+  line-height: 1.62;
+  font-weight: 400;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 960px) {
+  .editions-timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .timeline-poster-col {
+    order: -1;
+  }
+
+  .timeline-poster-card {
+    max-width: 360px;
+  }
+
+  .accomplish-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .accomplish-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero-section {
+    min-height: 360px;
+  }
+
+  .about-who-paragraphs p {
+    font-size: 0.95rem;
+  }
+}

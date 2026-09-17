@@ -1,0 +1,137 @@
+.fisco-footer {
+  background-color: var(--color-bg-footer);
+  color: #FFFFFF;
+  padding: 3.5rem 0 3rem;
+  margin-top: auto;
+}
+
+.fisco-footer-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 3rem;
+}
+
+@media (max-width: 860px) {
+  .footer-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+}
+
+.footer-col-title {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-title-dash {
+  color: var(--color-gold);
+  font-weight: 800;
+}
+
+/* Column 1: Info */
+.footer-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  color: #FFFFFF;
+}
+
+.footer-info-item a {
+  color: #FFFFFF;
+  transition: color 0.15s ease;
+}
+
+.footer-info-item a:hover {
+  color: var(--color-gold);
+}
+
+.footer-icon-yellow {
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Column 2: Links */
+.footer-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.footer-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, color 0.15s ease;
+  padding: 0;
+}
+
+.footer-nav-btn:hover {
+  color: var(--color-gold);
+  transform: translateX(4px);
+}
+
+.triangle-bullet {
+  color: var(--color-gold);
+  font-size: 0.75rem;
+}
+
+/* Column 3: About & Social */
+.footer-about-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 1.4rem;
+}
+
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-social-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  color: #381E0A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.footer-social-btn:hover {
+  transform: translateY(-2px);
+  background-color: #FFFFFF;
+  color: var(--color-primary);
+}

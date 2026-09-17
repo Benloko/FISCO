@@ -1,0 +1,387 @@
+/* ==========================================================
+   DEVENIR PARTENAIRE PAGE - FISCO FESTIVAL
+   Reproduction pixel-perfect des captures 1 et 2
+   ========================================================== */
+
+.partenaire-page-root {
+  background-color: #FFFFFF;
+  width: 100%;
+  min-height: calc(100vh - var(--header-height, 76px));
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. HERO BANNER */
+.partenaire-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #2F1707;
+}
+
+.partenaire-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.partenaire-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+}
+
+.partenaire-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 18, 6, 0.72) 0%,
+    rgba(54, 25, 8, 0.82) 100%
+  );
+}
+
+.partenaire-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 3.5rem 1.5rem;
+}
+
+.partenaire-hero-title {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* 2. MAIN PARTENAIRE SECTION */
+.partenaire-main-section {
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(4.5rem, 7vw, 7rem);
+  background-color: #FFFFFF;
+}
+
+.partenaire-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 3.5vw, 3rem);
+}
+
+.partenaire-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+/* LEFT COLUMN: ARGUMENTAIRE */
+.partenaire-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.partenaire-info-title {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(1.85rem, 2.6vw, 2.45rem);
+  font-weight: 800;
+  color: #42210B;
+  line-height: 1.2;
+  margin: 0 0 1.5rem 0;
+}
+
+.partenaire-info-text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #6E6E6E;
+  margin: 0 0 1.75rem 0;
+}
+
+.partenaire-clause-link {
+  display: inline-block;
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #42210B;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+.partenaire-clause-link:hover {
+  color: #D97706;
+}
+
+/* RIGHT COLUMN: FORMULAIRE */
+.partenaire-form-col {
+  width: 100%;
+}
+
+.partenaire-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.partenaire-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.partenaire-field-label {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.partenaire-input {
+  width: 100%;
+  border: 1.5px solid #6B4E37;
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  color: #222222;
+  background-color: #FFFFFF;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.partenaire-input::placeholder {
+  color: #8C8C8C;
+  font-weight: 400;
+}
+
+.partenaire-input:focus {
+  border-color: #D97706;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+}
+
+/* Lien clause au-dessus de la case à cocher */
+.partenaire-form-clause-row {
+  margin-top: 0.25rem;
+}
+
+.partenaire-form-clause-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #42210B;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.partenaire-form-clause-link:hover {
+  color: #D97706;
+}
+
+/* Checkbox d'acceptation */
+.partenaire-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: #333333;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 0.2rem;
+}
+
+.partenaire-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #42210B;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Bouton Devenir partenaire */
+.partenaire-submit-btn {
+  width: 100%;
+  background-color: #42210B;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 0.95rem 1.5rem;
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.partenaire-submit-btn:hover:not(:disabled) {
+  background-color: #2D1405;
+  box-shadow: 0 4px 14px rgba(66, 33, 11, 0.25);
+  transform: translateY(-1px);
+}
+
+.partenaire-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.partenaire-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Feedback message */
+.partenaire-alert {
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: fadeInDown 0.3s ease;
+}
+
+.partenaire-alert-success {
+  background-color: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #065F46;
+}
+
+.partenaire-alert-error {
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #991B1B;
+}
+
+/* MODAL CLAUSE & CONTRAT */
+.clause-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(20, 10, 5, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.clause-modal-box {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: modalPop 0.25s ease;
+}
+
+.clause-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #EAE5DE;
+  padding-bottom: 0.75rem;
+}
+
+.clause-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #42210B;
+  margin: 0;
+}
+
+.clause-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6E6E6E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.clause-modal-close:hover {
+  color: #1A1A1A;
+  background-color: #F5F0EB;
+}
+
+.clause-modal-body {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #4A4A4A;
+}
+
+.clause-modal-body h4 {
+  color: #42210B;
+  margin: 1.2rem 0 0.5rem;
+  font-size: 1rem;
+}
+
+.clause-modal-body p {
+  margin: 0 0 0.75rem;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 880px) {
+  .partenaire-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .partenaire-hero-section {
+    min-height: 200px;
+  }
+
+  .partenaire-hero-content {
+    padding: 2.5rem 1rem;
+  }
+
+  .partenaire-main-section {
+    padding: 2.5rem 0 4rem;
+  }
+}

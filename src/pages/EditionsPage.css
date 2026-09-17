@@ -1,0 +1,399 @@
+/* ==========================================================
+   EDITIONS PAGE - FISCO FESTIVAL
+   Reproduction pixel-perfect des 5 captures d'écran de l'Édition
+   ========================================================== */
+
+.editions-page-root {
+  background-color: #FFFFFF;
+  width: 100%;
+  min-height: calc(100vh - var(--header-height, 76px));
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. HERO BANNER */
+.editions-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #2F1707;
+}
+
+.editions-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.editions-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+}
+
+.editions-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 18, 6, 0.72) 0%,
+    rgba(54, 25, 8, 0.84) 100%
+  );
+}
+
+.editions-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editions-hero-title {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+  line-height: 1.15;
+}
+
+.editions-hero-subtitle {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 500;
+  color: #F3EDE8;
+  margin: 0.6rem 0 0;
+  letter-spacing: 0.02em;
+}
+
+.editions-hero-date {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-weight: 400;
+  color: #E2D7CE;
+  margin-top: 2rem;
+  letter-spacing: 0.03em;
+}
+
+/* 2. MAIN CONTENT CONTAINER */
+.editions-main-section {
+  padding: clamp(3rem, 5vw, 4.8rem) 0 clamp(4rem, 6vw, 6.5rem);
+  background-color: #FFFFFF;
+}
+
+.editions-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 3.5vw, 2.5rem);
+}
+
+/* THEME TITLE */
+.editions-theme-title {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(1.4rem, 2.2vw, 2.05rem);
+  font-weight: 800;
+  color: #F3A824;
+  line-height: 1.35;
+  margin: 0 0 2.2rem 0;
+}
+
+/* SECTION TITLES */
+.editions-section-heading {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 800;
+  color: #F3A824;
+  line-height: 1.3;
+  margin: 3.5rem 0 1.5rem 0;
+}
+
+/* PARAGRAPH STYLING */
+.editions-paragraph {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.98rem;
+  line-height: 1.78;
+  color: #2D2D2D;
+  margin: 0 0 1.5rem 0;
+  text-align: justify;
+}
+
+/* 2-COLUMN SPLIT BLOCKS */
+.editions-split-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.editions-split-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.editions-split-text .editions-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.editions-split-img-box {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  max-height: 380px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.editions-split-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.editions-split-img-box:hover .editions-split-img {
+  transform: scale(1.02);
+}
+
+/* VIDEO BANNER SECTION */
+.editions-video-banner {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 1.25rem 0 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editions-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.editions-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 20, 7, 0.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editions-play-btn {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background-color: #F3A824;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  padding-left: 5px; /* Optically center play triangle */
+}
+
+.editions-play-btn:hover {
+  transform: scale(1.08);
+  background-color: #DF9519;
+  box-shadow: 0 6px 25px rgba(243, 168, 36, 0.45);
+}
+
+/* MOMENTS FORTS GRID */
+.editions-highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin: 1.25rem 0 2rem;
+}
+
+.editions-highlight-card {
+  position: relative;
+  height: 280px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.editions-highlight-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.editions-highlight-card:hover img {
+  transform: scale(1.03);
+}
+
+.editions-highlight-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 29, 9, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.editions-highlight-text {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* EQUIPE SECTION */
+.editions-team-box {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 1.25rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  background-color: #F8F6F3;
+}
+
+.editions-team-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* VIDEO MODAL IF PLAY CLICKED */
+.video-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 5, 2, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.video-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background-color: #000000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.video-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #FFFFFF;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.video-modal-close:hover {
+  background: #F3A824;
+  color: #2F1707;
+}
+
+.video-frame-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+}
+
+.video-frame-wrapper iframe,
+.video-frame-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 880px) {
+  .editions-split-block {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* In mobile, alternating order still flows well */
+  .editions-split-block.reverse-on-desktop {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .editions-split-img-box {
+    min-height: 240px;
+    max-height: 300px;
+  }
+
+  .editions-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .editions-video-banner {
+    height: 280px;
+  }
+
+  .editions-play-btn {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 580px) {
+  .editions-hero-section {
+    min-height: 220px;
+  }
+
+  .editions-hero-date {
+    margin-top: 1.25rem;
+  }
+
+  .editions-main-section {
+    padding: 2.2rem 0 3.5rem;
+  }
+
+  .editions-paragraph {
+    text-align: left;
+  }
+}
