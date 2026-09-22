@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { CheckCircle2, AlertCircle, X, FileText } from 'lucide-react';
+import { Mail, Phone, ArrowRight, CheckCircle2, AlertCircle, ChevronDown } from 'lucide-react';
 import './PartenairePage.css';
 
 export default function PartenairePage() {
   const [formData, setFormData] = useState({
-    nom: '',
-    prenoms: '',
+    typePartenariat: '',
     email: '',
-    telephone: '',
-    acceptedTerms: false
+    message: ''
   });
 
   const [status, setStatus] = useState({
@@ -18,35 +16,43 @@ export default function PartenairePage() {
     message: ''
   });
 
-  const [showClauseModal, setShowClauseModal] = useState(false);
-
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.nom.trim() || !formData.prenoms.trim() || !formData.email.trim() || !formData.telephone.trim()) {
+    if (!formData.typePartenariat) {
       setStatus({
         submitted: true,
         loading: false,
         success: false,
-        message: 'Veuillez remplir tous les champs obligatoires (Nom, Prénoms, E-mail, Téléphone).'
+        message: 'Veuillez choisir un type de partenariat.'
       });
       return;
     }
 
-    if (!formData.acceptedTerms) {
+    if (!formData.email.trim() || !formData.email.includes('@')) {
       setStatus({
         submitted: true,
         loading: false,
         success: false,
-        message: 'Veuillez cocher la case pour accepter de devenir partenaire.'
+        message: 'Veuillez renseigner une adresse e-mail valide.'
+      });
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      setStatus({
+        submitted: true,
+        loading: false,
+        success: false,
+        message: 'Veuillez rédiger votre message ou proposition.'
       });
       return;
     }
@@ -61,12 +67,10 @@ export default function PartenairePage() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          _subject: `Nouvelle demande de Partenariat FISCO: ${formData.nom} ${formData.prenoms}`,
-          "Nom": formData.nom,
-          "Prénoms": formData.prenoms,
+          _subject: `Nouvelle demande de Partenariat FISCO: ${formData.typePartenariat}`,
+          "Type de Partenariat": formData.typePartenariat,
           "Email": formData.email,
-          "Téléphone": formData.telephone,
-          "Statut": "A accepté les clauses et contrat de partenariat",
+          "Message": formData.message,
           _replyto: formData.email,
           _template: "table"
         })
@@ -77,14 +81,12 @@ export default function PartenairePage() {
           submitted: true,
           loading: false,
           success: true,
-          message: 'Félicitations ! Votre demande de partenariat a été transmise au comité du FISCO. Nous prendrons contact avec vous très prochainement.'
+          message: 'Votre proposition a bien été transmise. Nous prendrons contact sous 48h.'
         });
         setFormData({
-          nom: '',
-          prenoms: '',
+          typePartenariat: '',
           email: '',
-          telephone: '',
-          acceptedTerms: false
+          message: ''
         });
       } else {
         throw new Error("Erreur de transmission");
@@ -94,19 +96,19 @@ export default function PartenairePage() {
         submitted: true,
         loading: false,
         success: false,
-        message: "Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion ou nous contacter à fisco2026@gmail.com."
+        message: "Une erreur est survenue lors de l'envoi. Écrivez-nous à fisco2026@gmail.com."
       });
     }
   };
 
   return (
     <div className="partenaire-page-root fade-in">
-      {/* 1. HERO BANNER */}
+      {/* 1. HERO BANNER COMPACT */}
       <section className="partenaire-hero-section">
         <div className="partenaire-hero-bg">
           <img
             src="/assets/images/sculptor-chisel.jpg"
-            alt="Sculpture sur pierre en plein travail"
+            alt="Sculpture contemporaine au burin"
             className="partenaire-hero-bg-img"
           />
           <div className="partenaire-hero-overlay" />
@@ -114,191 +116,158 @@ export default function PartenairePage() {
 
         <div className="partenaire-hero-content">
           <h1 className="partenaire-hero-title">Devenir Partenaire</h1>
+          <p className="partenaire-hero-subline">
+            Construisons ensemble un carrefour artistique d'excellence et d'émancipation culturelle à Ouidah.
+          </p>
         </div>
       </section>
 
-      {/* 2. SECTION PRINCIPALE */}
+      {/* 2. SECTION PRINCIPALE SANS CARTE BLANCHE */}
       <section className="partenaire-main-section">
         <div className="partenaire-container">
           <div className="partenaire-layout-grid">
 
-            {/* Colonne gauche : Texte & Engagement */}
+            {/* Colonne gauche : Texte & Les 2 Coordonnées */}
             <div className="partenaire-info-col">
+              <span className="partenaire-section-tag">COLLABORATION & IMPACT</span>
               <h2 className="partenaire-info-title">Rejoignez-nous dans cette aventure</h2>
+              <div className="partenaire-title-bar" />
+              
               <p className="partenaire-info-text">
-                Raison pour lequel devenir partenaire. Pourquoi nous rejoindre...Raison pour lequel devenir partenaire. Pourquoi nous rejoindre...Raison pour lequel devenir partenaire. Pourquoi nous rejoindre...Raison pour lequel devenir partenaire. Pourquoi nous rejoindre...Raison pour lequel devenir partenaire. Pourquoi nous rejoindre...Raison pour lequel devenir partenaire. Pourquoi nous rejoindre...
+                Associez votre organisation à un événement culturel international célébrant la sculpture contemporaine, les jeunes talents et le patrimoine vivant d'Ouidah.
+              </p>
+              
+              <p className="partenaire-info-text-secondary">
+                Mécénat culturel, appui institutionnel, soutien technique ou visibilité médiatique : nous développons des partenariats sur-mesure à fort impact.
               </p>
 
-              <div>
-                <button
-                  type="button"
-                  onClick={() => setShowClauseModal(true)}
-                  className="partenaire-clause-link"
-                >
-                  Clause et contrat de partenariat
-                </button>
+              {/* Les 2 seules coordonnées sur la MÊME LIGNE sans carte */}
+              <div className="partenaire-coords-block">
+                <span className="partenaire-coords-heading">Nos coordonnées directes</span>
+                <div className="partenaire-coords-row">
+                  
+                  {/* Email */}
+                  <a href="mailto:fisco2026@gmail.com" className="partenaire-coord-inline">
+                    <div className="partenaire-coord-icon-box" aria-hidden="true">
+                      <Mail size={16} />
+                    </div>
+                    <div className="partenaire-coord-detail">
+                      <span className="partenaire-coord-label">Email</span>
+                      <span className="partenaire-coord-val">fisco2026@gmail.com</span>
+                    </div>
+                  </a>
+
+                  {/* Téléphone */}
+                  <a href="tel:+2290102030405" className="partenaire-coord-inline">
+                    <div className="partenaire-coord-icon-box" aria-hidden="true">
+                      <Phone size={16} />
+                    </div>
+                    <div className="partenaire-coord-detail">
+                      <span className="partenaire-coord-label">Téléphone</span>
+                      <span className="partenaire-coord-val">+229 01 02 03 04 05</span>
+                    </div>
+                  </a>
+
+                </div>
               </div>
             </div>
 
-            {/* Colonne droite : Formulaire */}
+            {/* Colonne droite : Formulaire sans carte blanche (intégré directement) */}
             <div className="partenaire-form-col">
-              <form className="partenaire-form" onSubmit={handleSubmit} noValidate>
-                
+              <div className="partenaire-form-seamless">
+                <div className="partenaire-form-header">
+                  <h3 className="partenaire-form-title">Demande de Partenariat</h3>
+                  <p className="partenaire-form-desc">
+                    Renseignez vos informations ci-dessous. Notre équipe vous répond sous 48h.
+                  </p>
+                </div>
+
                 {status.submitted && status.message && (
                   <div className={`partenaire-alert ${status.success ? 'partenaire-alert-success' : 'partenaire-alert-error'}`}>
-                    {status.success ? <CheckCircle2 size={20} /> : <AlertCircle size={20} />}
+                    {status.success ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
                     <span>{status.message}</span>
                   </div>
                 )}
 
-                {/* Champ Nom */}
-                <div className="partenaire-field-group">
-                  <label htmlFor="partenaire-nom" className="partenaire-field-label">
-                    Nom
-                  </label>
-                  <input
-                    id="partenaire-nom"
-                    type="text"
-                    name="nom"
-                    value={formData.nom}
-                    onChange={handleChange}
-                    placeholder="Votre nom"
-                    className="partenaire-input"
-                    required
-                  />
-                </div>
+                <form className="partenaire-form" onSubmit={handleSubmit} noValidate>
+                  
+                  {/* 1. Type de partenariat */}
+                  <div className="partenaire-field-group">
+                    <label htmlFor="partenaire-type" className="partenaire-field-label">
+                      Type de partenariat <span className="partenaire-required">*</span>
+                    </label>
+                    <div className="partenaire-select-wrapper">
+                      <select
+                        id="partenaire-type"
+                        name="typePartenariat"
+                        value={formData.typePartenariat}
+                        onChange={handleChange}
+                        className="partenaire-select"
+                        required
+                      >
+                        <option value="" disabled>Sélectionnez une formule...</option>
+                        <option value="Partenariat Mécénat & Soutien Financier">Partenariat Mécénat & Soutien Financier</option>
+                        <option value="Partenariat Institutionnel & Collectivités">Partenariat Institutionnel & Collectivités</option>
+                        <option value="Partenariat Logistique, Matériel & Technique">Partenariat Logistique, Matériel & Technique</option>
+                        <option value="Partenariat Médias & Visibilité Presse">Partenariat Médias & Visibilité Presse</option>
+                        <option value="Autre projet de collaboration">Autre projet de collaboration</option>
+                      </select>
+                      <ChevronDown className="partenaire-select-arrow" size={15} aria-hidden="true" />
+                    </div>
+                  </div>
 
-                {/* Champ Prénoms */}
-                <div className="partenaire-field-group">
-                  <label htmlFor="partenaire-prenoms" className="partenaire-field-label">
-                    Prénoms
-                  </label>
-                  <input
-                    id="partenaire-prenoms"
-                    type="text"
-                    name="prenoms"
-                    value={formData.prenoms}
-                    onChange={handleChange}
-                    placeholder="Votre prénoms"
-                    className="partenaire-input"
-                    required
-                  />
-                </div>
+                  {/* 2. E-mail */}
+                  <div className="partenaire-field-group">
+                    <label htmlFor="partenaire-email" className="partenaire-field-label">
+                      Adresse e-mail <span className="partenaire-required">*</span>
+                    </label>
+                    <input
+                      id="partenaire-email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="nom@organisation.com"
+                      className="partenaire-input"
+                      required
+                    />
+                  </div>
 
-                {/* Champ E-mail */}
-                <div className="partenaire-field-group">
-                  <label htmlFor="partenaire-email" className="partenaire-field-label">
-                    E-mail
-                  </label>
-                  <input
-                    id="partenaire-email"
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                    className="partenaire-input"
-                    required
-                  />
-                </div>
+                  {/* 3. Zone de message */}
+                  <div className="partenaire-field-group">
+                    <label htmlFor="partenaire-message" className="partenaire-field-label">
+                      Votre message ou proposition <span className="partenaire-required">*</span>
+                    </label>
+                    <textarea
+                      id="partenaire-message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Décrivez brièvement votre structure ou vos souhaits de partenariat..."
+                      rows={3}
+                      className="partenaire-textarea"
+                      required
+                    />
+                  </div>
 
-                {/* Champ Téléphone */}
-                <div className="partenaire-field-group">
-                  <label htmlFor="partenaire-tel" className="partenaire-field-label">
-                    Téléphone
-                  </label>
-                  <input
-                    id="partenaire-tel"
-                    type="tel"
-                    name="telephone"
-                    value={formData.telephone}
-                    onChange={handleChange}
-                    placeholder="Téléphone"
-                    className="partenaire-input"
-                    required
-                  />
-                </div>
-
-                {/* Lien Clause & Case à cocher */}
-                <div className="partenaire-form-clause-row">
-                  <button
-                    type="button"
-                    onClick={() => setShowClauseModal(true)}
-                    className="partenaire-form-clause-link"
-                  >
-                    Clause et contrat de partenariat
-                  </button>
-                </div>
-
-                <label className="partenaire-checkbox-label">
-                  <input
-                    type="checkbox"
-                    name="acceptedTerms"
-                    checked={formData.acceptedTerms}
-                    onChange={handleChange}
-                    className="partenaire-checkbox"
-                  />
-                  <span>J’accepte devenir partenaire</span>
-                </label>
-
-                {/* Bouton de soumission */}
-                <button
-                  type="submit"
-                  disabled={status.loading}
-                  className="partenaire-submit-btn"
-                >
-                  {status.loading ? 'Envoi en cours...' : 'Devenir partenaire'}
-                </button>
-              </form>
+                  {/* 4. Bouton d'envoi */}
+                  <div className="partenaire-submit-wrapper">
+                    <button
+                      type="submit"
+                      disabled={status.loading}
+                      className="partenaire-submit-btn-compact"
+                    >
+                      <span>{status.loading ? 'Envoi...' : 'Devenir partenaire'}</span>
+                      <ArrowRight className="partenaire-submit-icon" size={15} />
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
 
           </div>
         </div>
       </section>
-
-      {/* MODAL CLAUSE ET CONTRAT DE PARTENARIAT */}
-      {showClauseModal && (
-        <div className="clause-modal-overlay" onClick={() => setShowClauseModal(false)}>
-          <div className="clause-modal-box" onClick={(e) => e.stopPropagation()}>
-            <div className="clause-modal-header">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FileText size={20} color="#42210B" />
-                <h3 className="clause-modal-title">Clause et Contrat de Partenariat</h3>
-              </div>
-              <button
-                type="button"
-                className="clause-modal-close"
-                onClick={() => setShowClauseModal(false)}
-                aria-label="Fermer"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            <div className="clause-modal-body">
-              <h4>1. Objet du Partenariat</h4>
-              <p>
-                Le présent contrat a pour objet de définir les modalités de collaboration et de soutien entre le Festival International de Sculpture de Cotonou (FISCO) et la partie signataire, dans le cadre de la promotion culturelle, des résidences artistiques et des expositions publiques.
-              </p>
-
-              <h4>2. Engagements du Festival</h4>
-              <p>
-                Le FISCO s'engage à assurer la visibilité du partenaire sur l'ensemble des supports de communication officiels (site web, affichage urbain, catalogues, mentions presse et réseaux sociaux), conformément à la formule de partenariat retenue.
-              </p>
-
-              <h4>3. Engagements du Partenaire</h4>
-              <p>
-                Le partenaire s'engage à apporter son appui financier, matériel ou logistique selon les termes convenus avec le comité d'organisation du festival.
-              </p>
-
-              <h4>4. Confidentialité et Éthique</h4>
-              <p>
-                Les deux parties conviennent de préserver la confidentialité des échanges et de promouvoir les valeurs de respect, de valorisation du patrimoine artistique et d'inclusion socioculturelle.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

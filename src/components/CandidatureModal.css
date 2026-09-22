@@ -1,0 +1,401 @@
+/* ==========================================================
+   CANDIDATURE MODAL - FISCO FESTIVAL
+   Formulaire pro, épuré et moderne d'inscription aux appels
+   ========================================================== */
+
+.candidature-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(18, 9, 3, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 1.5rem 1rem;
+}
+
+.candidature-modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background-color: #FFFFFF;
+  border-radius: 18px;
+  box-shadow: 0 25px 70px rgba(35, 17, 5, 0.45);
+  border: 1px solid #EADBCC;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.candidature-modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #EAE3DA;
+  background-color: #FAF8F6;
+  color: #381C08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.candidature-modal-close:hover {
+  background-color: #D87D1B;
+  border-color: #D87D1B;
+  color: #FFFFFF;
+  transform: rotate(90deg);
+}
+
+/* ==========================================================
+   CONTENU DU FORMULAIRE (DÉFILABLE & 1 CHAMP PAR LIGNE)
+   ========================================================== */
+.candidature-form-view {
+  padding: 2.2rem clamp(1.25rem, 3.5vw, 2.4rem);
+  overflow-y: auto;
+  max-height: calc(88vh - 10px);
+}
+
+.candidature-form-view::-webkit-scrollbar {
+  width: 6px;
+}
+
+.candidature-form-view::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+.candidature-form-view::-webkit-scrollbar-thumb {
+  background: #EADBCC;
+  border-radius: 4px;
+}
+
+.candidature-form-view::-webkit-scrollbar-thumb:hover {
+  background: #D87D1B;
+}
+
+.candidature-form-header {
+  margin-bottom: 1.6rem;
+  padding-right: 2.5rem;
+}
+
+.candidature-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(216, 125, 27, 0.12);
+  color: #D87D1B;
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin-bottom: 0.6rem;
+}
+
+.badge-tag-icon {
+  flex-shrink: 0;
+}
+
+.candidature-modal-title {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 800;
+  color: #381C08;
+  line-height: 1.25;
+  margin: 0 0 0.45rem 0;
+  letter-spacing: -0.01em;
+}
+
+.candidature-modal-subtitle {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.9rem;
+  color: #70635A;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Error message */
+.candidature-error-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #DC2626;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Form fields layout : 1 CHAMP PAR LIGNE */
+.candidature-actual-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.candidature-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.candidature-label {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #381C08;
+}
+
+.req-star {
+  color: #D87D1B;
+}
+
+.candidature-input,
+.candidature-select,
+.candidature-textarea {
+  width: 100%;
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.92rem;
+  color: #2B1607;
+  background-color: #FAF8F5;
+  border: 1.5px solid #E8DFD5;
+  border-radius: 9px;
+  padding: 0.75rem 0.95rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.candidature-input:focus,
+.candidature-select:focus,
+.candidature-textarea:focus {
+  background-color: #FFFFFF;
+  border-color: #D87D1B;
+  box-shadow: 0 0 0 3px rgba(216, 125, 27, 0.15);
+}
+
+.candidature-input::placeholder,
+.candidature-textarea::placeholder {
+  color: #A3968B;
+  font-size: 0.88rem;
+}
+
+.candidature-textarea {
+  resize: vertical;
+  min-height: 75px;
+  line-height: 1.5;
+}
+
+/* Submit section */
+.candidature-submit-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.candidature-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 2rem;
+  background-color: #D87D1B;
+  color: #FFFFFF;
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(216, 125, 27, 0.35);
+  transition: all 0.2s ease;
+}
+
+.candidature-btn-submit:hover:not(:disabled) {
+  background-color: #E27928;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(216, 125, 27, 0.45);
+}
+
+.candidature-btn-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn-send-icon {
+  transition: transform 0.2s ease;
+}
+
+.candidature-btn-submit:hover:not(:disabled) .btn-send-icon {
+  transform: translateX(3px) translateY(-1px);
+}
+
+.candidature-submit-hint {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.78rem;
+  color: #8C7D73;
+}
+
+/* ==========================================================
+   ÉCRAN DE SUCCÈS
+   ========================================================== */
+.candidature-success-view {
+  padding: 3.5rem clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candidature-success-icon-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: rgba(216, 125, 27, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  animation: pulseIn 0.4s ease forwards;
+}
+
+@keyframes pulseIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.candidature-check-icon {
+  color: #D87D1B;
+}
+
+.candidature-success-title {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 800;
+  color: #381C08;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.25;
+}
+
+.candidature-success-desc {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.96rem;
+  color: #55483F;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 0 1.5rem 0;
+}
+
+.candidature-success-recap {
+  width: 100%;
+  max-width: 480px;
+  background-color: #FAF8F5;
+  border: 1px solid #EAE3DA;
+  border-radius: 10px;
+  padding: 1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.recap-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  border-bottom: 1px dashed #EDE5DC;
+  padding-bottom: 0.4rem;
+}
+
+.recap-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.recap-label {
+  font-weight: 600;
+  color: #7A695D;
+}
+
+.recap-val {
+  font-weight: 700;
+  color: #381C08;
+}
+
+.candidature-success-note {
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.85rem;
+  color: #8C7D73;
+  margin: 0 0 1.8rem 0;
+  max-width: 460px;
+  line-height: 1.5;
+}
+
+.candidature-btn-finish {
+  padding: 0.8rem 2rem;
+  background-color: #381C08;
+  color: #FFFFFF;
+  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.candidature-btn-finish:hover {
+  background-color: #D87D1B;
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 620px) {
+  .candidature-btn-submit {
+    width: 100%;
+  }
+
+  .candidature-submit-wrap {
+    width: 100%;
+    align-items: stretch;
+  }
+}

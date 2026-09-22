@@ -9,16 +9,18 @@ import EditionsPage from './pages/EditionsPage';
 import ActualitesPage from './pages/ActualitesPage';
 import ActualiteDetailPage from './pages/ActualiteDetailPage';
 import PartenairePage from './pages/PartenairePage';
+import AppelCandidaturePage from './pages/AppelCandidaturePage';
 
 export default function App() {
   const [activePage, setActivePage] = useState('accueil');
   const [partnerModalOpen, setPartnerModalOpen] = useState(false);
+  const [selectedArticleId, setSelectedArticleId] = useState(1);
 
   // Sync hash routing if user uses back/forward buttons
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '');
-      if (['accueil', 'editions', 'actualites', 'actualite-detail', 'apropos', 'contacts', 'partenaire'].includes(hash)) {
+      if (['accueil', 'editions', 'actualites', 'actualite-detail', 'apropos', 'contacts', 'partenaire', 'candidature'].includes(hash)) {
         setActivePage(hash);
       }
     };
@@ -29,7 +31,10 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  const handlePageChange = (pageId) => {
+  const handlePageChange = (pageId, articleId = null) => {
+    if (articleId) {
+      setSelectedArticleId(articleId);
+    }
     setActivePage(pageId);
     window.location.hash = pageId;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -67,11 +72,14 @@ export default function App() {
         {activePage === 'actualites' && (
           <ActualitesPage 
             setActivePage={handlePageChange}
+            onSelectArticle={(id) => setSelectedArticleId(id)}
             onOpenPartnerModal={() => handlePageChange('partenaire')}
           />
         )}
         {activePage === 'actualite-detail' && (
           <ActualiteDetailPage 
+            articleId={selectedArticleId}
+            onSelectArticle={(id) => setSelectedArticleId(id)}
             onBackToList={() => handlePageChange('actualites')}
             setActivePage={handlePageChange}
             onOpenPartnerModal={() => handlePageChange('partenaire')}
@@ -82,6 +90,12 @@ export default function App() {
         )}
         {activePage === 'partenaire' && (
           <PartenairePage />
+        )}
+        {activePage === 'candidature' && (
+          <AppelCandidaturePage 
+            setActivePage={handlePageChange}
+            onOpenPartnerModal={() => handlePageChange('partenaire')}
+          />
         )}
       </main>
 

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Globe, ChevronDown, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Phone, Mail, Globe, ChevronDown, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 import './ContactPage.css';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     subject: "Plus d'informations",
     message: ''
@@ -28,12 +27,22 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+    if (!formData.email.trim() || !formData.email.includes('@')) {
       setStatus({
         submitted: true,
         loading: false,
         success: false,
-        message: 'Veuillez renseigner tous les champs obligatoires.'
+        message: 'Veuillez renseigner une adresse e-mail valide.'
+      });
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      setStatus({
+        submitted: true,
+        loading: false,
+        success: false,
+        message: 'Veuillez saisir votre message.'
       });
       return;
     }
@@ -48,8 +57,7 @@ export default function ContactPage() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          _subject: `Nouveau message FISCO de ${formData.name} (${formData.subject})`,
-          "Nom et Prénoms": formData.name,
+          _subject: `Nouveau message FISCO (${formData.subject})`,
           "Email": formData.email,
           "Sujet": formData.subject,
           "Message": formData.message,
@@ -63,10 +71,9 @@ export default function ContactPage() {
           submitted: true,
           loading: false,
           success: true,
-          message: 'Merci ! Votre message a bien été envoyé. Notre équipe vous répondra rapidement.'
+          message: 'Merci pour votre message ! Notre équipe vous répondra dans les plus brefs délais.'
         });
         setFormData({
-          name: '',
           email: '',
           subject: "Plus d'informations",
           message: ''
@@ -79,19 +86,19 @@ export default function ContactPage() {
         submitted: true,
         loading: false,
         success: false,
-        message: "Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion ou nous écrire directement à fisco2026@gmail.com."
+        message: "Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion ou nous contacter directement à fisco2026@gmail.com."
       });
     }
   };
 
   return (
     <div className="contact-page-root fade-in">
-      {/* 1. HERO BANNER - Exact reproduction */}
+      {/* 1. HERO BANNER COMPACT */}
       <section className="contact-hero-section">
         <div className="contact-hero-bg">
           <img
             src="/assets/images/sculptor-chisel.jpg"
-            alt="Sculpture sur pierre en plein travail"
+            alt="Sculpture contemporaine au burin"
             className="contact-hero-bg-img"
           />
           <div className="contact-hero-overlay" />
@@ -99,6 +106,9 @@ export default function ContactPage() {
 
         <div className="contact-hero-content">
           <h1 className="contact-hero-title">Contactez-Nous</h1>
+          <p className="contact-hero-subline">
+            Une question ou un projet ? Notre équipe est à votre écoute pour vous accompagner.
+          </p>
         </div>
       </section>
 
@@ -107,87 +117,80 @@ export default function ContactPage() {
         <div className="contact-container">
           <div className="contact-layout-grid">
             
-            {/* Colonne gauche : Coordonnées */}
+            {/* Colonne gauche : Coordonnées et Accueil */}
             <div className="contact-info-col">
+              <span className="contact-section-tag">ÉCHANGE & ACCÈS</span>
               <h2 className="contact-info-title">Envoyez-nous un message</h2>
+              <div className="contact-title-bar" />
+              
               <p className="contact-info-subtitle">
-                Remplissez le formulaire ci-dessous pour nous contacter directement.
+                Remplissez le formulaire ou contactez-nous directement via nos coordonnées officielles.
               </p>
 
-              <ul className="contact-details-list">
-                <li className="contact-detail-item">
+              <div className="contact-details-list">
+                {/* Téléphone */}
+                <a href="tel:+2290102030405" className="contact-detail-item">
                   <div className="contact-detail-icon-wrap" aria-hidden="true">
-                    <MapPin />
+                    <Phone size={16} />
                   </div>
-                  <span className="contact-detail-text">Cotonou/ Fidjrossè BP 1234</span>
-                </li>
+                  <div className="contact-detail-content">
+                    <span className="contact-detail-label">Téléphone & WhatsApp</span>
+                    <span className="contact-detail-val">+229 01 02 03 04 05</span>
+                  </div>
+                </a>
 
-                <li>
-                  <a href="tel:+229010203040506" className="contact-detail-item">
-                    <div className="contact-detail-icon-wrap" aria-hidden="true">
-                      <Phone />
-                    </div>
-                    <span className="contact-detail-text">+229 01 02 03 04 05 06</span>
-                  </a>
-                </li>
+                {/* Email */}
+                <a href="mailto:fisco2026@gmail.com" className="contact-detail-item">
+                  <div className="contact-detail-icon-wrap" aria-hidden="true">
+                    <Mail size={16} />
+                  </div>
+                  <div className="contact-detail-content">
+                    <span className="contact-detail-label">Courriel officiel</span>
+                    <span className="contact-detail-val">fisco2026@gmail.com</span>
+                  </div>
+                </a>
 
-                <li>
-                  <a href="mailto:fisco2026@gmail.com" className="contact-detail-item">
-                    <div className="contact-detail-icon-wrap" aria-hidden="true">
-                      <Mail />
-                    </div>
-                    <span className="contact-detail-text">fisco2026@gmail.com</span>
-                  </a>
-                </li>
-
-                <li>
-                  <a 
-                    href="https://www.notresite.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="contact-detail-item"
-                  >
-                    <div className="contact-detail-icon-wrap" aria-hidden="true">
-                      <Globe />
-                    </div>
-                    <span className="contact-detail-text">www.notresite.com</span>
-                  </a>
-                </li>
-              </ul>
+                {/* Site Web */}
+                <a 
+                  href="https://www.fisco-benin.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="contact-detail-item"
+                >
+                  <div className="contact-detail-icon-wrap" aria-hidden="true">
+                    <Globe size={16} />
+                  </div>
+                  <div className="contact-detail-content">
+                    <span className="contact-detail-label">Site Web</span>
+                    <span className="contact-detail-val">www.fisco-benin.org</span>
+                  </div>
+                </a>
+              </div>
             </div>
 
-            {/* Colonne droite : Formulaire */}
+            {/* Colonne droite : Formulaire sans Nom ni Prénoms, bouton compact */}
             <div className="contact-form-col">
-              <form className="contact-form" onSubmit={handleSubmit} noValidate>
-                
+              <div className="contact-form-wrapper">
+                <div className="contact-form-header">
+                  <h3 className="contact-form-title">Formulaire de contact</h3>
+                  <p className="contact-form-desc">
+                    Renseignez votre e-mail et votre message ci-dessous.
+                  </p>
+                </div>
+
                 {status.submitted && status.message && (
                   <div className={`contact-alert ${status.success ? 'contact-alert-success' : 'contact-alert-error'}`}>
-                    {status.success ? <CheckCircle2 size={20} /> : <AlertCircle size={20} />}
+                    {status.success ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
                     <span>{status.message}</span>
                   </div>
                 )}
 
-                {/* Ligne 1 : Nom et Prénoms & Email */}
-                <div className="contact-form-row">
-                  <div className="contact-field-group">
-                    <label htmlFor="contact-name" className="contact-field-label">
-                      Nom et Prénoms
-                    </label>
-                    <input
-                      id="contact-name"
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Nom et prénoms"
-                      className="contact-input"
-                      required
-                    />
-                  </div>
-
+                <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                  
+                  {/* 1. Email (Nom et Prénoms retirés) */}
                   <div className="contact-field-group">
                     <label htmlFor="contact-email" className="contact-field-label">
-                      Email
+                      Adresse e-mail <span className="contact-required">*</span>
                     </label>
                     <input
                       id="contact-email"
@@ -195,64 +198,65 @@ export default function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Email"
+                      placeholder="nom@exemple.com"
                       className="contact-input"
                       required
                     />
                   </div>
-                </div>
 
-                {/* Ligne 2 : Sujet avec sélecteur personnalisé */}
-                <div className="contact-field-group">
-                  <label htmlFor="contact-subject" className="contact-field-label">
-                    Sujet
-                  </label>
-                  <div className="contact-select-wrapper">
-                    <select
-                      id="contact-subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="contact-select"
-                    >
-                      <option value="Plus d'informations">Plus d’informations</option>
-                      <option value="Devenir Partenaire">Devenir Partenaire</option>
-                      <option value="Candidature Artiste / Sculpteur">Candidature Artiste / Sculpteur</option>
-                      <option value="Presse & Médias">Presse & Médias</option>
-                      <option value="Autre demande">Autre demande</option>
-                    </select>
-                    <div className="contact-select-icon" aria-hidden="true">
-                      <ChevronDown size={20} />
+                  {/* 2. Sujet */}
+                  <div className="contact-field-group">
+                    <label htmlFor="contact-subject" className="contact-field-label">
+                      Sujet de votre message
+                    </label>
+                    <div className="contact-select-wrapper">
+                      <select
+                        id="contact-subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        className="contact-select"
+                      >
+                        <option value="Plus d'informations">Plus d’informations</option>
+                        <option value="Devenir Partenaire">Devenir Partenaire</option>
+                        <option value="Candidature Artiste / Sculpteur">Candidature Artiste / Sculpteur</option>
+                        <option value="Presse & Médias">Presse & Médias</option>
+                        <option value="Autre demande">Autre demande</option>
+                      </select>
+                      <ChevronDown className="contact-select-icon" size={16} aria-hidden="true" />
                     </div>
                   </div>
-                </div>
 
-                {/* Ligne 3 : Message */}
-                <div className="contact-field-group">
-                  <label htmlFor="contact-message" className="contact-field-label">
-                    Message
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Ecrivez-nous"
-                    className="contact-textarea"
-                    rows={6}
-                    required
-                  />
-                </div>
+                  {/* 3. Message */}
+                  <div className="contact-field-group">
+                    <label htmlFor="contact-message" className="contact-field-label">
+                      Votre message <span className="contact-required">*</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Écrivez votre message ici..."
+                      className="contact-textarea"
+                      rows={4}
+                      required
+                    />
+                  </div>
 
-                {/* Bouton Envoyer */}
-                <button
-                  type="submit"
-                  disabled={status.loading}
-                  className="contact-submit-btn"
-                >
-                  {status.loading ? 'Envoi en cours...' : 'Envoyer'}
-                </button>
-              </form>
+                  {/* 4. Bouton Envoyer compact et élégant (fini le gros bouton trop large) */}
+                  <div className="contact-submit-wrapper">
+                    <button
+                      type="submit"
+                      disabled={status.loading}
+                      className="contact-submit-btn-compact"
+                    >
+                      <span>{status.loading ? 'Envoi...' : 'Envoyer'}</span>
+                      <ArrowRight className="contact-submit-icon" size={15} />
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
 
           </div>

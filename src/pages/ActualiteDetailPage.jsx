@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, MapPin } from 'lucide-react';
+import { FISCO_ARTICLES } from '../data/actualitesData';
 import './ActualiteDetailPage.css';
 
 const FacebookIcon = () => (
@@ -28,195 +29,232 @@ const YoutubeIcon = () => (
   </svg>
 );
 
-export default function ActualiteDetailPage({ onBackToList, setActivePage, onOpenPartnerModal }) {
-  const otherActivities = [
-    {
-      id: 1,
-      title: 'Célébration du 8 mars en différé',
-      excerpt: 'Une exposition qui explore les blessures invisibles qui marquent œuvres...',
-      image: '/assets/images/article-card-thumb.jpg',
-    },
-    {
-      id: 2,
-      title: 'Célébration du 8 mars en différé',
-      excerpt: 'Une exposition qui explore les blessures invisibles qui marquent œuvres...',
-      image: '/assets/images/article-card-thumb.jpg',
-    },
-    {
-      id: 3,
-      title: 'Célébration du 8 mars en différé',
-      excerpt: 'Une exposition qui explore les blessures invisibles qui marquent œuvres...',
-      image: '/assets/images/article-card-thumb.jpg',
-    },
-  ];
+export default function ActualiteDetailPage({
+  articleId = 1,
+  onSelectArticle,
+  onBackToList,
+  setActivePage,
+  onOpenPartnerModal
+}) {
+  const currentArticle =
+    FISCO_ARTICLES.find((a) => a.id === Number(articleId)) || FISCO_ARTICLES[0];
 
-  const handleSelectOther = () => {
+  // 3 autres activités récentes pour la grille du bas
+  const otherActivities = FISCO_ARTICLES.filter(
+    (a) => a.id !== currentArticle.id
+  ).slice(0, 3);
+
+  const handleSelectOther = (newId) => {
+    if (onSelectArticle) {
+      onSelectArticle(newId);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="actualite-detail-page fade-in">
-      {/* 1. HERO BANNER (Screenshot 1) */}
-      <section className="actualites-hero-section">
-        <div className="actualites-hero-bg">
+      {/* 1. HERO BANNER : TITRE ET EXTRAIT DE L'ACTUALITÉ SUR L'IMAGE DU HAUT */}
+      <section className="actualite-detail-hero-section">
+        <div className="actualite-detail-hero-bg">
           <img
-            src="/assets/images/hero-bg.jpg"
-            alt="Sculpture taillée"
-            className="actualites-hero-bg-img"
+            src={currentArticle.image}
+            alt={currentArticle.title}
+            className="actualite-detail-hero-bg-img"
           />
-          <div className="actualites-hero-overlay" />
+          <div className="actualite-detail-hero-overlay" />
         </div>
 
-        <div className="container actualites-hero-content">
-          <h1 className="actualites-hero-title">Actualités</h1>
-          <p className="actualites-hero-desc">
-            Découvrez les initiatives et projets menés par notre ONG pour promouvoir l’autonomisation des femmes et contribuer au développement durable.
-          </p>
-          <p className="actualites-hero-quote">
-            Chaque action est une pierre ajoutée à l’édifice d’un monde plus équitable.
+        <div className="container actualite-detail-hero-content">
+          <h1 className="actualite-detail-hero-title">{currentArticle.title}</h1>
+          <p className="actualite-detail-hero-desc">
+            {currentArticle.excerpt}
           </p>
         </div>
       </section>
 
-      {/* 2. FEATURED ARTICLE SECTION (Screenshots 1, 2, 3) */}
-      <article className="article-main-container">
-        <div className="container">
-          {/* Featured Large Image (Screenshot 1 & 2) */}
-          <div className="article-featured-image-box">
+      {/* 2. CONTENU PRINCIPAL DE L'ARTICLE */}
+      <article className="article-main-container-pro">
+        <div className="article-content-wrapper-pro">
+          {/* Bouton de retour simple SANS carte */}
+          {onBackToList && (
+            <div className="article-back-nav">
+              <button
+                type="button"
+                onClick={onBackToList}
+                className="btn-back-clean"
+              >
+                <ArrowLeft size={18} />
+                <span>Retour aux actualités</span>
+              </button>
+            </div>
+          )}
+
+          {/* Grande photo de l'article */}
+          <div className="article-featured-media-card">
             <img
-              src="/assets/images/article-featured-expo.jpg"
-              alt="Visite de l'exposition - Former, inspirer, transformer"
-              className="article-featured-img"
+              src={currentArticle.image}
+              alt={currentArticle.title}
+              className="article-featured-img-cover"
             />
           </div>
 
-          {/* Article Header & Body (Screenshot 2 & 3) */}
-          <div className="article-content-body">
-            <h1 className="article-headline-title">
-              Former, inspirer, transformer : quand Conscience Féminine et Rescue The World ONG façonnent les leaders de demain
+          {/* En-tête : Métadonnées (Date et Lieu bien visibles) */}
+          <div className="article-editorial-header">
+            <div className="article-event-meta-row">
+              <span className="article-meta-badge-detail">
+                <Calendar size={15} className="meta-icon-amber" />
+                <span>{currentArticle.date}</span>
+              </span>
+              <span className="article-meta-badge-detail">
+                <MapPin size={15} className="meta-icon-amber" />
+                <span>{currentArticle.location}</span>
+              </span>
+            </div>
+
+            {/* Titre fort, lisible, chocolat profond */}
+            <h1 className="article-headline-title-pro">
+              {currentArticle.title}
             </h1>
-
-            <div className="article-paragraphs">
-              <p>
-                Dans une dynamique de promotion du leadership féminin et de l’autonomisation économique des jeunes femmes, Conscience Féminine et Rescue The World ont organisé, le 21 mars 2026 dans la salle de la Fondation Valley de l’Université de Parakou, une initiative de renforcement des capacités au profit des étudiantes.Dans une dynamique de promotion du leadership féminin et de l’autonomisation économique des jeunes femmes, Conscience Féminine et Rescue The World ont organisé, le 21 mars 2026 dans la salle de la Fondation Valley de l’Université de Parakou, une initiative de renforcement des capacités au profit des étudiantes.
-              </p>
-
-              <p>
-                Dans une dynamique de promotion du leadership féminin et de l’autonomisation économique des jeunes femmes, Conscience Féminine et Rescue The World ont organisé, le 21 mars 2026 dans la salle de la Fondation Valley de l’Université de Parakou, une initiative de renforcement des capacités au profit des étudiantes.
-              </p>
-
-              <p>
-                Dans une dynamique de promotion du leadership féminin et de l’autonomisation économique des jeunes femmes, Conscience Féminine et Rescue The World ont organisé, le 21 mars 2026 dans la salle de la Fondation Valley de l’Université de Parakou, une initiative de renforcement des capacités au profit des étudiantes.
-              </p>
-            </div>
-
-            {/* Social Share (Screenshot 3) */}
-            <div className="article-share-block">
-              <h3 className="article-share-heading">Partagez cette activité</h3>
-              <div className="article-share-buttons">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="article-share-btn"
-                  aria-label="Partager sur Facebook"
-                >
-                  <FacebookIcon />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="article-share-btn"
-                  aria-label="Partager sur LinkedIn"
-                >
-                  <LinkedinIcon />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="article-share-btn"
-                  aria-label="Partager sur Instagram"
-                >
-                  <InstagramIcon />
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="article-share-btn"
-                  aria-label="Partager sur YouTube"
-                >
-                  <YoutubeIcon />
-                </a>
-              </div>
-            </div>
           </div>
 
-          {/* Divider Line (Screenshot 3) */}
-          <hr className="article-section-divider" />
+          {/* Corps de l'article */}
+          <div className="article-editorial-body">
+            {currentArticle.paragraphs && currentArticle.paragraphs.map((p, idx) => (
+              <p
+                key={idx}
+                className={idx === 0 ? 'article-lead-paragraph' : 'article-body-paragraph'}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
 
-          {/* 3. AUTRES ACTIVITÉS RÉCENTES (Screenshot 3 & 4) */}
-          <section className="section-autres-activites-recentes">
-            <h2 className="recent-activities-heading">Autres activités récentes</h2>
-
-            <div className="recent-activities-cards-grid">
-              {otherActivities.map((item) => (
-                <div key={item.id} className="activity-horizontal-card">
-                  {/* Left: Image */}
-                  <div className="activity-card-media">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="activity-card-img"
-                    />
-                  </div>
-
-                  {/* Right: Content */}
-                  <div className="activity-card-info">
-                    <h4 className="activity-card-title">{item.title}</h4>
-                    <p className="activity-card-desc">{item.excerpt}</p>
-                    <button
-                      className="activity-card-link-btn"
-                      onClick={handleSelectOther}
-                    >
-                      Voir les détails <span className="arrow-sym">→</span>
-                    </button>
-                  </div>
-                </div>
-              ))}
+          {/* Partage social SANS carte */}
+          <div className="article-social-share-clean">
+            <span className="article-share-title-clean">Partagez cette actualité :</span>
+            <div className="article-share-icons-clean">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="social-circle-clean"
+                aria-label="Partager sur Facebook"
+              >
+                <FacebookIcon />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                className="social-circle-clean"
+                aria-label="Partager sur LinkedIn"
+              >
+                <LinkedinIcon />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="social-circle-clean"
+                aria-label="Partager sur Instagram"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noreferrer"
+                className="social-circle-clean"
+                aria-label="Partager sur YouTube"
+              >
+                <YoutubeIcon />
+              </a>
             </div>
-          </section>
+          </div>
         </div>
       </article>
 
-      {/* 4. POURQUOI DEVENIR PARTENAIRE ? BANNER (Screenshot 4) */}
-      <section className="section-partner-cta-banner">
-        <div className="partner-cta-card-inner">
-          {/* Left Text Col */}
-          <div className="partner-cta-text-col">
-            <h2 className="partner-cta-title">
-              Pourquoi devenir partenaire ?
-            </h2>
-            <p className="partner-cta-desc">
-              Vous souhaitez contribuer à nos initiatives ou participer à nos prochains événements ? Nous sommes toujours à la recherche de bénévoles passionnés et engagés pour nous aider à faire la différence dans la vie des femmes et des communautés locales.
-            </p>
-            <button
-              className="btn-cta-devenir-partenaire"
-              onClick={() => (setActivePage ? setActivePage('partenaire') : onOpenPartnerModal())}
-            >
-              Devenir Partenaire
-            </button>
+      {/* 3. AUTRES ACTIVITÉS RÉCENTES (Même largeur que la carte Devenir Partenaire) */}
+      <section className="section-other-activities-wide-pro">
+        <div className="partner-cta-container-wide">
+          <div className="other-activities-header-wide">
+            <span className="other-activities-tag-pro">À DÉCOUVRIR AUSSI</span>
+            <h2 className="other-activities-title-wide">Autres activités récentes</h2>
           </div>
 
-          {/* Right Image Col */}
-          <div className="partner-cta-photo-col">
-            <img
-              src="/assets/images/sculptor-chisel.jpg"
-              alt="Sculpture de lion au burin"
-              className="partner-cta-photo-img"
-            />
+          <div className="other-activities-grid-wide-pro">
+            {otherActivities.map((item) => (
+              <div
+                key={item.id}
+                className="other-activity-card-wide-pro"
+                onClick={() => handleSelectOther(item.id)}
+                role="button"
+                tabIndex={0}
+              >
+                {/* Vignette rectangulaire à gauche */}
+                <div className="other-activity-thumb-wide">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="other-activity-img-wide"
+                  />
+                </div>
+
+                {/* Contenu textuel à droite */}
+                <div className="other-activity-details-wide">
+                  <div className="other-activity-meta-line">
+                    <span className="other-activity-date-pill">
+                      <Calendar size={13} className="other-meta-icon" />
+                      <span>{item.date}</span>
+                    </span>
+                  </div>
+
+                  <h3 className="other-activity-card-title-wide">{item.title}</h3>
+                  <p className="other-activity-card-desc-wide">{item.excerpt}</p>
+
+                  <span className="other-activity-read-link-wide">
+                    <span>Voir les détails</span>
+                    <ArrowRight size={14} className="other-activity-arrow" />
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. POURQUOI DEVENIR PARTENAIRE ? BANNER PLUS PROPRE ET PRO */}
+      <section className="section-partner-cta-banner-pro">
+        <div className="partner-cta-container-wide">
+          <div className="partner-cta-card-pro">
+            <div className="partner-cta-text-col">
+              <span className="partner-cta-tag">MÉCÉNAT & IMPACT</span>
+              <h2 className="partner-cta-title">
+                Pourquoi devenir partenaire ?
+              </h2>
+              <p className="partner-cta-desc">
+                Vous souhaitez contribuer au rayonnement de la sculpture contemporaine et accompagner nos résidences d'artistes à Ouidah ? Associez votre organisation à un rendez-vous culturel prestigieux et bâtissons ensemble un partenariat sur-mesure.
+              </p>
+              
+              {/* Bouton Devenir Partenaire simple, propre et beau */}
+              <button
+                className="btn-cta-partner-sleek"
+                onClick={() => (setActivePage ? setActivePage('partenaire') : onOpenPartnerModal())}
+                type="button"
+              >
+                <span>Devenir Partenaire</span>
+                <ArrowRight size={16} className="btn-cta-partner-icon" />
+              </button>
+            </div>
+
+            <div className="partner-cta-photo-col">
+              <img
+                src="/assets/images/sculptor-chisel.jpg"
+                alt="Artiste sculptant au burin"
+                className="partner-cta-photo-img"
+              />
+              <div className="partner-cta-photo-overlay" />
+            </div>
           </div>
         </div>
       </section>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Mail, Phone } from 'lucide-react';
 import './Navbar.css';
 
 const FacebookIcon = () => (
@@ -47,69 +47,92 @@ export default function Navbar({ activePage, setActivePage, onOpenPartnerModal }
 
   return (
     <header className="fisco-header">
-      <div className="container fisco-header-inner">
-        {/* Left: Official Logo */}
-        <button 
-          className="header-logo-btn" 
-          onClick={() => handleNav('accueil')}
-          aria-label="FISCO Accueil"
-        >
-          <img 
-            src="/assets/images/logo.png" 
-            alt="Festival International de Sculpture de Cotonou" 
-            className="header-logo-img"
-          />
-        </button>
-
-        {/* Center: Navigation Links */}
-        <nav className="header-nav-desktop">
-          <ul className="header-nav-list">
-            {navItems.map(item => (
-              <li key={item.id}>
-                <button
-                  className={`header-nav-link ${(activePage === item.id || (item.id === 'actualites' && activePage === 'actualite-detail')) ? 'is-active' : ''}`}
-                  onClick={() => handleNav(item.id)}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Right: Social Media + Devenir Partenaire Button */}
-        <div className="header-actions-desktop">
-          <div className="header-social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="Facebook">
-              <FacebookIcon />
+      {/* 1. TOPBAR SUPÉRIEURE (Inspirée du modèle pro CPLA) */}
+      <div className="header-topbar">
+        <div className="container header-topbar-inner">
+          <div className="topbar-left">
+            <span className="topbar-tag-bold">FISCO | Édition 2026</span>
+          </div>
+          <div className="topbar-right">
+            <a href="mailto:fisco2026@gmail.com" className="topbar-link">
+              <Mail size={13} className="topbar-icon" />
+              <span>fisco2026@gmail.com</span>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="LinkedIn">
-              <LinkedinIcon />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="Instagram">
-              <InstagramIcon />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="YouTube">
-              <YoutubeIcon />
+            <span className="topbar-sep">•</span>
+            <a href="tel:+2290167578494" className="topbar-link">
+              <Phone size={13} className="topbar-icon" />
+              <span>+229 01 67 57 84 94</span>
             </a>
           </div>
+        </div>
+      </div>
 
+      {/* 2. BARRE DE NAVIGATION PRINCIPALE */}
+      <div className="header-main-nav">
+        <div className="container fisco-header-inner">
+          {/* Logo officiel */}
           <button 
-            className={`btn-devenir-partenaire ${activePage === 'partenaire' ? 'is-active-page' : ''}`}
-            onClick={() => handleNav('partenaire')}
+            className="header-logo-btn" 
+            onClick={() => handleNav('accueil')}
+            aria-label="FISCO Accueil"
           >
-            Devenir Partenaire
+            <img 
+              src="/assets/images/logo.png" 
+              alt="Festival International de Sculpture de Cotonou" 
+              className="header-logo-img"
+            />
+          </button>
+
+          {/* Navigation Links Desktop */}
+          <nav className="header-nav-desktop">
+            <ul className="header-nav-list">
+              {navItems.map(item => (
+                <li key={item.id}>
+                  <button
+                    className={`header-nav-link ${(activePage === item.id || (item.id === 'actualites' && activePage === 'actualite-detail')) ? 'is-active' : ''}`}
+                    onClick={() => handleNav(item.id)}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Actions Desktop : Réseaux sociaux + Bouton Devenir Partenaire */}
+          <div className="header-actions-desktop">
+            <div className="header-social-icons">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="Facebook">
+                <FacebookIcon />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="LinkedIn">
+                <LinkedinIcon />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-circle-btn" aria-label="YouTube">
+                <YoutubeIcon />
+              </a>
+            </div>
+
+            <button 
+              className={`btn-devenir-partenaire ${activePage === 'partenaire' ? 'is-active-page' : ''}`}
+              onClick={() => handleNav('partenaire')}
+            >
+              Devenir Partenaire
+            </button>
+          </div>
+
+          {/* Bouton burger mobile */}
+          <button 
+            className="header-burger-btn"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          >
+            {mobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-
-        {/* Mobile Toggle Button */}
-        <button 
-          className="header-burger-btn"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        >
-          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
-        </button>
       </div>
 
       {/* Mobile Drawer */}
