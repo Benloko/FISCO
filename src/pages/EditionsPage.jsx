@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Play, X, MapPin, Calendar, ArrowRight, ArrowLeft } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight, ArrowLeft } from 'lucide-react';
 import { EDITIONS_DATA, CURRENT_EDITION } from '../data/editionsData';
 import './EditionsPage.css';
 
 export default function EditionsPage({ setActivePage, onOpenPartnerModal, initialEditionId }) {
   // Par défaut null -> Affichage de la liste/grille de cartes des éditions (comme Actualités)
   const [selectedEditionId, setSelectedEditionId] = useState(initialEditionId || null);
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   // Synchronise si initialEditionId change
   useEffect(() => {
@@ -53,9 +52,9 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
           </div>
 
           <div className="container editions-hero-content">
-            <h1 className="editions-hero-title">Nos Éditions</h1>
+            <h1 className="editions-hero-title">Edition</h1>
             <p className="editions-hero-desc">
-              Explorez l'histoire, les œuvres monumentales et les temps forts de chaque édition du Festival International de Sculpture de Cotonou.
+              Explorez l'histoire, les œuvres monumentales et les temps forts du Festival International de Sculpture de Cotonou.
             </p>
           </div>
         </section>
@@ -165,7 +164,7 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
       <section className="editions-main-section">
         <div className="editions-container">
 
-          {/* Bouton de retour à la liste des éditions */}
+          {/* Bouton de retour */}
           <div className="editions-back-nav">
             <button
               type="button"
@@ -173,7 +172,7 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
               className="btn-back-clean"
             >
               <ArrowLeft size={18} />
-              <span>Retour à toutes les éditions</span>
+              <span>Retour</span>
             </button>
           </div>
           
@@ -228,25 +227,31 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
             {currentEdition.fullParagraph2}
           </p>
 
-          {/* Section 3 : Nom de l'exposition & Vidéo teaser */}
+          {/* Section 3 : Nom de l'exposition & Visite Virtuelle VR */}
           <h3 className="editions-section-heading">{currentEdition.expoTitle}</h3>
-          <div className="editions-video-banner">
+          <a
+            href={currentEdition.virtualExpoUrl || 'https://www.google.com'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="editions-vr-banner"
+            aria-label={currentEdition.virtualExpoText || "Visiter l'exposition virtuelle"}
+          >
             <img
               src={currentEdition.expoImage}
               alt={`Aperçu de ${currentEdition.expoTitle}`}
-              className="editions-video-bg"
+              className="editions-vr-bg"
             />
-            <div className="editions-video-overlay">
-              <button
-                type="button"
-                className="editions-play-btn"
-                onClick={() => setVideoModalOpen(true)}
-                aria-label="Lire la vidéo officielle de l'exposition"
-              >
-                <Play size={34} fill="#2A1405" color="#2A1405" />
-              </button>
+            
+            {/* Overlay interactif avec changement d'état au survol */}
+            <div className="editions-vr-overlay">
+              {/* État au survol : Texte "Visiter l'exposition virtuelle" */}
+              <div className="editions-vr-hover-box">
+                <span className="editions-vr-hover-text">
+                  {currentEdition.virtualExpoText || "Visiter l'exposition virtuelle"}
+                </span>
+              </div>
             </div>
-          </div>
+          </a>
 
           {/* Section 4 : Moments forts du festival */}
           <h3 className="editions-section-heading">Moments forts du festival</h3>
@@ -280,44 +285,8 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
             />
           </div>
 
-          {/* Bouton pour revenir à la vue catalogue */}
-          <div className="editions-bottom-all-btn-wrap">
-            <button
-              type="button"
-              className="btn-back-clean"
-              onClick={handleBackToList}
-            >
-              <ArrowLeft size={16} />
-              <span>Voir toutes les éditions</span>
-            </button>
-          </div>
-
         </div>
       </section>
-
-      {/* MODALE LECTEUR VIDÉO */}
-      {videoModalOpen && (
-        <div className="video-modal-backdrop" onClick={() => setVideoModalOpen(false)}>
-          <div className="video-modal-container" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="video-modal-close"
-              onClick={() => setVideoModalOpen(false)}
-              aria-label="Fermer la vidéo"
-            >
-              <X size={22} />
-            </button>
-            <div className="video-frame-wrapper">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"
-                title="Vidéo officielle de l'exposition"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

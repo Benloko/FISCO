@@ -44,7 +44,7 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
           <div className="about-hero-overlay" />
         </div>
 
-        <div className="container about-hero-content">
+        <div className="about-container about-hero-content">
           <h1 className="about-hero-title">À propos du festival</h1>
           <p className="about-hero-desc">
             Célébrer la matière, éveiller les vocations et faire résonner la créativité contemporaine au cœur d’Ouidah.
@@ -54,7 +54,7 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
 
       {/* 2. QUI SOMMES-NOUS ? */}
       <section className="about-who-section">
-        <div className="container">
+        <div className="about-container">
           <div className="about-section-header">
             <span className="about-section-subtitle">Notre Histoire & Identité</span>
             <h2 className="about-section-heading">Qui sommes-nous ?</h2>
@@ -85,7 +85,7 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
 
       {/* 3. CE QUE NOUS VOULONS ACCOMPLIR */}
       <section className="about-accomplish-section">
-        <div className="container">
+        <div className="about-container">
           <div className="about-section-header">
             <span className="about-section-subtitle">Notre Mission & Vision</span>
             <h2 className="accomplish-title">Ce que nous voulons accomplir</h2>
@@ -109,15 +109,15 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
               </div>
             </div>
 
-            {/* BOUTON ÉDITIONS PRÉCÉDENTES (SOBRE, PROFESSIONNEL ET ÉLÉGANT) */}
+            {/* BOUTON ÉDITION */}
             <div className="about-editions-cta-box">
               <button
                 className="about-editions-btn-sleek"
                 onClick={handleEditionClick}
                 type="button"
-                aria-label="Accéder aux éditions précédentes du festival"
+                aria-label="Accéder à l'édition du festival"
               >
-                <span>Éditions précédentes</span>
+                <span>Découvrir l'édition</span>
                 <ArrowRight className="about-btn-arrow-sleek" size={17} />
               </button>
             </div>

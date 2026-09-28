@@ -33,7 +33,7 @@ export default function Navbar({ activePage, setActivePage, onOpenPartnerModal }
 
   const navItems = [
     { id: 'accueil', label: 'Accueil' },
-    { id: 'editions', label: 'Editions' },
+    { id: 'editions', label: 'Edition' },
     { id: 'actualites', label: 'Actualités' },
     { id: 'apropos', label: 'A propos' },
     { id: 'contacts', label: 'Contacts' }
@@ -49,35 +49,37 @@ export default function Navbar({ activePage, setActivePage, onOpenPartnerModal }
     <header className="fisco-header">
       {/* BARRE DE NAVIGATION PRINCIPALE (Fidèle à Figma) */}
       <div className="header-main-nav">
-        <div className="container fisco-header-inner">
-          {/* Logo officiel */}
-          <button 
-            className="header-logo-btn" 
-            onClick={() => handleNav('accueil')}
-            aria-label="FISCO Accueil"
-          >
-            <img 
-              src="/assets/images/logo.png" 
-              alt="Festival International de Sculpture de Cotonou" 
-              className="header-logo-img"
-            />
-          </button>
+        <div className="fisco-header-inner">
+          {/* Zone Gauche : Logo officiel + Liens de navigation alignés ensemble */}
+          <div className="header-left-group">
+            <button 
+              className="header-logo-btn" 
+              onClick={() => handleNav('accueil')}
+              aria-label="FISCO Accueil"
+            >
+              <img 
+                src="/assets/images/logo.png" 
+                alt="Festival International de Sculpture de Cotonou" 
+                className="header-logo-img"
+              />
+            </button>
 
-          {/* Navigation Links Desktop */}
-          <nav className="header-nav-desktop">
-            <ul className="header-nav-list">
-              {navItems.map(item => (
-                <li key={item.id}>
-                  <button
-                    className={`header-nav-link ${(activePage === item.id || (item.id === 'actualites' && activePage === 'actualite-detail')) ? 'is-active' : ''}`}
-                    onClick={() => handleNav(item.id)}
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            {/* Liens de navigation alignés à la suite du logo */}
+            <nav className="header-nav-desktop">
+              <ul className="header-nav-list">
+                {navItems.map(item => (
+                  <li key={item.id}>
+                    <button
+                      className={`header-nav-link ${(activePage === item.id || (item.id === 'actualites' && activePage === 'actualite-detail')) ? 'is-active' : ''}`}
+                      onClick={() => handleNav(item.id)}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
 
           {/* Actions Desktop : Réseaux sociaux + Bouton Devenir Partenaire */}
           <div className="header-actions-desktop">

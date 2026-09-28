@@ -78,10 +78,11 @@
 }
 
 .editions-edition-status-badge.is-current {
-  background-color: rgba(216, 125, 27, 0.25);
-  border: 1px solid #D87D1B;
-  color: #FFC06E;
-  box-shadow: 0 2px 10px rgba(216, 125, 27, 0.25);
+  background-color: #FCAE1A;
+  color: #2F1707;
+  font-weight: 700;
+  border: none;
+  box-shadow: none;
 }
 
 .editions-edition-status-badge.is-archive {
@@ -173,7 +174,8 @@
 
 .editions-cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 480px));
+  justify-content: center;
   gap: 1.8rem;
   max-width: 900px;
   margin: 0 auto;
@@ -236,16 +238,19 @@
 }
 
 .edition-card-badge.is-current {
-  background: linear-gradient(135deg, #F3A824 0%, #D87D1B 100%);
-  color: #241103;
+  background: #FCAE1A;
+  background-color: #FCAE1A;
+  color: #2F1707;
   font-weight: 800;
-  box-shadow: 0 4px 12px rgba(216, 125, 27, 0.4);
+  border-radius: 6px;
+  box-shadow: none;
 }
 
 .edition-card-badge.is-retro {
   background: rgba(36, 17, 4, 0.88);
   color: #EDE4DC;
   border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
   backdrop-filter: blur(4px);
 }
 
@@ -386,42 +391,39 @@
   transform: translateX(-4px);
 }
 
-.editions-bottom-all-btn-wrap {
-  margin-top: 2.2rem;
-  display: flex;
-  justify-content: center;
-}
-
 /* 4. MAIN CONTENT CONTAINER (VUE DÉTAILLÉE) */
 .editions-main-section {
-  padding: 1.25rem 0 3.5rem;
+  padding: 1.5rem 0 4.5rem;
   background-color: #FFFFFF;
+  width: 100%;
 }
 
 .editions-container {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 clamp(1.25rem, 3.5vw, 2.5rem);
+  width: 100%;
+  max-width: 100%;
+  padding: 0 clamp(1.4rem, 3.2vw, 3.8rem);
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* THEME TITLE */
 .editions-theme-title {
   font-family: var(--font-main, 'Montserrat', sans-serif);
-  font-size: clamp(1.35rem, 2.1vw, 1.95rem);
+  font-size: clamp(1.4rem, 2.2vw, 2.05rem);
   font-weight: 800;
   color: #D87D1B;
   line-height: 1.38;
-  margin: 0 0 1.25rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
 /* SECTION TITLES */
 .editions-section-heading {
   font-family: var(--font-main, 'Montserrat', sans-serif);
-  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-size: clamp(1.4rem, 2.1vw, 1.85rem);
   font-weight: 800;
   color: #381C08;
   line-height: 1.3;
-  margin: 3.8rem 0 1.5rem 0;
+  margin: 4rem 0 1.6rem 0;
   position: relative;
   display: inline-block;
 }
@@ -440,10 +442,10 @@
 /* PARAGRAPH STYLING */
 .editions-paragraph {
   font-family: var(--font-main, 'Montserrat', sans-serif);
-  font-size: 0.98rem;
-  line-height: 1.78;
+  font-size: 1.01rem;
+  line-height: 1.82;
   color: #333333;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.6rem 0;
   text-align: justify;
 }
 
@@ -451,9 +453,9 @@
 .editions-split-block {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(2.5rem, 5vw, 4.8rem);
   align-items: center;
-  margin: 1.5rem 0;
+  margin: 1.8rem 0;
 }
 
 .editions-split-text {
@@ -468,8 +470,8 @@
 .editions-split-img-box {
   width: 100%;
   height: 100%;
-  min-height: 320px;
-  max-height: 380px;
+  min-height: 340px;
+  max-height: 440px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
@@ -480,78 +482,97 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
 }
 
-.editions-split-img-box:hover .editions-split-img {
-  transform: scale(1.025);
-}
-
-/* VIDEO BANNER SECTION */
-.editions-video-banner {
+/* VR BANNER / EXPOSITION VIRTUELLE SECTION */
+.editions-vr-banner {
   position: relative;
   width: 100%;
-  height: 380px;
+  height: clamp(340px, 30vw, 460px);
   border-radius: 8px;
   overflow: hidden;
-  margin: 1.5rem 0 2rem;
+  margin: 1.8rem 0 2.5rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #2F1707;
 }
 
-.editions-video-bg {
+.editions-vr-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
 }
 
-.editions-video-overlay {
+.editions-vr-banner:hover .editions-vr-bg {
+  transform: scale(1.04);
+}
+
+.editions-vr-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(42, 20, 7, 0.58);
+  background: rgba(42, 20, 7, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.editions-play-btn {
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  background-color: #D87D1B;
-  border: none;
+.editions-vr-banner:hover .editions-vr-overlay {
+  background: rgba(45, 20, 6, 0.74);
+}
+
+/* État au Survol : Texte "Visiter l'exposition virtuelle" */
+.editions-vr-hover-box {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
-  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-  padding-left: 4px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  max-width: 750px;
 }
 
-.editions-play-btn:hover {
-  transform: scale(1.08);
-  background-color: #E27928;
-  box-shadow: 0 8px 30px rgba(216, 125, 27, 0.5);
+.editions-vr-banner:hover .editions-vr-hover-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.editions-vr-hover-text {
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: clamp(1.75rem, 3.2vw, 2.7rem);
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+  user-select: none;
 }
 
 /* MOMENTS FORTS GRID */
 .editions-highlights-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  margin: 1.5rem 0 2rem;
+  gap: clamp(1.8rem, 3.5vw, 3rem);
+  margin: 1.8rem 0 2.5rem;
 }
 
 .editions-highlight-card {
   position: relative;
-  height: 280px;
+  height: clamp(280px, 24vw, 360px);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 }
 
 .editions-highlight-img {
@@ -559,27 +580,34 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
-}
-
-.editions-highlight-card:hover .editions-highlight-img {
-  transform: scale(1.03);
 }
 
 .editions-highlight-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(42, 20, 7, 0.2) 0%, rgba(42, 20, 7, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(42, 20, 7, 0.1) 0%, rgba(42, 20, 7, 0.88) 100%);
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
   padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.editions-highlight-card:hover .editions-highlight-overlay {
+  opacity: 1;
 }
 
 .editions-highlight-content {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  transform: translateY(8px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editions-highlight-card:hover .editions-highlight-content {
+  transform: translateY(0);
 }
 
 .editions-highlight-text {
@@ -596,7 +624,7 @@
   font-size: 0.86rem;
   color: #F0ECE9;
   line-height: 1.4;
-  opacity: 0.92;
+  opacity: 0.95;
 }
 
 /* EQUIPE SECTION */
@@ -604,14 +632,14 @@
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
   background-color: #F8F6F3;
 }
 
 .editions-team-img {
   width: 100%;
-  max-height: 480px;
+  max-height: 560px;
   object-fit: cover;
   object-position: top center;
   display: block;
@@ -865,13 +893,8 @@
     gap: 1.5rem;
   }
 
-  .editions-video-banner {
+  .editions-vr-banner {
     height: 280px;
-  }
-
-  .editions-play-btn {
-    width: 64px;
-    height: 64px;
   }
 }
 

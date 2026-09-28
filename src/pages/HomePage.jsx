@@ -3,6 +3,16 @@ import { MapPin, Plus, ArrowRight } from 'lucide-react';
 import './HomePage.css';
 
 export default function HomePage({ setActivePage, onOpenPartnerModal }) {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
+  // Défilement automatique toutes les 10 secondes (10s)
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToPresentation = () => {
     const el = document.getElementById('presentation-section');
     if (el) {
@@ -19,47 +29,101 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
 
   return (
     <div className="home-exact-page fade-in">
-      {/* 1. HERO SECTION (Screenshot 1) */}
+      {/* 1. HERO SECTION - CAROUSEL AUTO HORIZONTAL 2 SLIDES (10s) */}
       <section className="home-hero-section">
-        <div className="home-hero-bg-layer">
-          <img 
-            src="/assets/images/hero-bg.jpg" 
-            alt="Sculpture sur pierre au marteau" 
-            className="home-hero-bg-img"
-          />
-          <div className="home-hero-overlay" />
-        </div>
+        <div 
+          className="home-hero-slider-track"
+          style={{ transform: `translateX(-${currentSlide * 50}%)` }}
+        >
+          {/* SLIDE 1 : Logo FISCO + Titre + Bouton En savoir plus */}
+          <div className="home-hero-slide-item">
+            <div className="home-hero-bg-layer">
+              <img 
+                src="/assets/images/hero-bg.jpg" 
+                alt="Sculpture sur pierre au marteau" 
+                className="home-hero-bg-img"
+              />
+              <div className="home-hero-overlay" />
+            </div>
 
-        <div className="container home-hero-content">
-          {/* Logo officiel Figma (asset e02612019e55f24fb2669278f4749ee2edc83dc4) sans contours superflus */}
-          <div className="hero-logo-badge">
-            <img 
-              src="/assets/images/fisco-logo-hero.png" 
-              alt="Logo Officiel FISCO" 
-              className="hero-badge-logo-img"
-            />
+            <div className="container home-hero-content">
+              <div className="hero-logo-badge">
+                <img 
+                  src="/assets/images/fisco-logo-hero.png" 
+                  alt="Logo Officiel FISCO" 
+                  className="hero-badge-logo-img"
+                />
+              </div>
+
+              <h1 className="hero-brand-name">FISCO</h1>
+              <p className="hero-brand-subtitle">
+                FESTIVAL INTERNATIONAL DE SCULPTURE<br />
+                DE COTONOU
+              </p>
+
+              <button 
+                className="btn-en-savoir-plus-hero"
+                onClick={scrollToPresentation}
+                type="button"
+                aria-label="En savoir plus"
+              >
+                <span>En savoir plus</span>
+              </button>
+            </div>
           </div>
 
-          <h1 className="hero-brand-name">FISCO</h1>
-          <p className="hero-brand-subtitle">
-            FESTIVAL INTERNATIONAL DE SCULPTURE<br />
-            DE COTONOU
-          </p>
+          {/* SLIDE 2 : Donnez vie à vos œuvres + Candidatez + Appel à candidature */}
+          <div className="home-hero-slide-item">
+            <div className="home-hero-bg-layer">
+              <img 
+                src="/assets/images/sculptor-chisel.jpg" 
+                alt="Candidatez au Festival International de Sculpture de Cotonou" 
+                className="home-hero-bg-img"
+              />
+              <div className="home-hero-overlay home-hero-overlay-dark" />
+            </div>
 
+            <div className="container home-hero-content home-hero-content-candidature">
+              <p className="hero-slide2-tagline">
+                Donnez vie à vos œuvres au cœur de l'Afrique
+              </p>
+
+              <h2 className="hero-slide2-title">
+                Candidatez au Festival International de Sculpture de Cotonou.
+              </h2>
+
+              <button 
+                className="btn-appel-candidature-hero"
+                onClick={handleGoToCandidature}
+                type="button"
+                aria-label="Appel à candidature"
+              >
+                <span>Appel à candidature</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Indicateurs de carousel (Dots cliquables) */}
+        <div className="hero-carousel-dots">
           <button 
-            className="btn-appel-candidature"
-            onClick={handleGoToCandidature}
             type="button"
-            aria-label="Appel à candidature"
-          >
-            <span>Appel à candidature</span>
-          </button>
+            className={`hero-carousel-dot ${currentSlide === 0 ? 'is-active' : ''}`}
+            onClick={() => setCurrentSlide(0)}
+            aria-label="Aller au slide 1"
+          />
+          <button 
+            type="button"
+            className={`hero-carousel-dot ${currentSlide === 1 ? 'is-active' : ''}`}
+            onClick={() => setCurrentSlide(1)}
+            aria-label="Aller au slide 2"
+          />
         </div>
       </section>
 
       {/* 2. BIENVENUE & MOT DU DIRECTEUR (Screenshot 2) */}
       <section id="presentation-section" className="section-bienvenue">
-        <div className="container">
+        <div className="bienvenue-container">
           <div className="bienvenue-grid">
             {/* Colonne gauche : Texte éditorial avec lettrine B et signature */}
             <div className="bienvenue-text-col">
@@ -153,11 +217,8 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
                   alt="Célébration du 8 mars en différé" 
                   className="news-card-img"
                 />
-                <span className="badge-date-top">8 Mar</span>
-                <span className="badge-location-bottom">
-                  <MapPin size={13} className="pin-icon" />
-                  <span>Ouidah / Centre</span>
-                </span>
+                <div className="news-card-media-overlay" />
+                <span className="badge-date-top">8 Mars</span>
               </div>
               <div className="news-card-body">
                 <h3 className="news-card-title">Célébration du 8 mars en différé</h3>
@@ -170,7 +231,7 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
               </div>
             </div>
 
-            {/* Carte 2 avec badges */}
+            {/* Carte 2 */}
             <div 
               className="news-dark-card"
               onClick={() => {
@@ -186,11 +247,8 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
                   alt="Célébration du 8 mars en différé" 
                   className="news-card-img"
                 />
-                <span className="badge-date-top">3 Mar</span>
-                <span className="badge-location-bottom">
-                  <MapPin size={13} className="pin-icon" />
-                  <span>Calavi / Zogbadjè</span>
-                </span>
+                <div className="news-card-media-overlay" />
+                <span className="badge-date-top">3 Mars</span>
               </div>
               <div className="news-card-body">
                 <h3 className="news-card-title">Célébration du 8 mars en différé</h3>

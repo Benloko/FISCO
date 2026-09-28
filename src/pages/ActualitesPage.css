@@ -89,10 +89,19 @@
   max-width: 680px;
 }
 
+.actualites-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 clamp(1.4rem, 3.2vw, 3.8rem);
+  margin: 0;
+  box-sizing: border-box;
+}
+
 /* 2. RECHERCHE ET FILTRES */
 .actualites-search-section {
-  padding: 1.25rem 0 0.85rem;
+  padding: 1.5rem 0 1rem;
   background-color: #FAF8F5;
+  width: 100%;
 }
 
 .actualites-search-container {
@@ -105,7 +114,7 @@
   align-items: center;
   gap: 0.85rem;
   width: 100%;
-  max-width: 720px;
+  max-width: 780px;
 }
 
 /* Filtre placé EN PREMIER avec dropdown */
@@ -120,7 +129,7 @@
   gap: 0.55rem;
   background-color: #FFFFFF;
   border: 1.5px solid #DDD6CE;
-  border-radius: 9999px;
+  border-radius: 6px;
   padding: 0.68rem 1.25rem;
   font-size: 0.88rem;
   font-weight: 700;
@@ -153,7 +162,7 @@
   z-index: 50;
   background-color: #FFFFFF;
   border: 1.5px solid #E6DCD1;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 12px 30px rgba(66, 33, 11, 0.15);
   padding: 0.45rem;
   min-width: 200px;
@@ -176,7 +185,7 @@
 
 .filter-dropdown-item {
   padding: 0.6rem 0.95rem;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
   background: transparent;
   font-size: 0.86rem;
@@ -206,7 +215,7 @@
   flex-grow: 1;
   background-color: #FFFFFF;
   border: 1.5px solid #DDD6CE;
-  border-radius: 9999px;
+  border-radius: 6px;
   padding: 0 1rem 0 1.25rem;
   box-shadow: 0 4px 14px rgba(66, 33, 11, 0.05);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -255,22 +264,24 @@
 
 /* 3. GRILLE DE 2 LIGNES (CARTES FONCÉES STYLE ORIGINAL) */
 .actualites-grid-section {
-  padding: 0.5rem 0 3.5rem;
+  padding: 0.8rem 0 4.5rem;
   background-color: #FAF8F5;
+  width: 100%;
 }
 
 .actualites-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.2rem;
+  gap: clamp(1.6rem, 2.8vw, 2.6rem);
   align-items: stretch;
+  width: 100%;
 }
 
 /* CARTES D'ACTUALITÉS FONCÉES (COULEUR & CONTOUR ORIGINAUX, SANS BADGES) */
 .actualite-dark-card {
   background-color: #42210B;
-  border-radius: 4px;
-  padding: 1.25rem;
+  border-radius: 6px;
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -292,7 +303,7 @@
   aspect-ratio: 16/10;
   overflow: hidden;
   margin-bottom: 1.25rem;
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: #2F1707;
 }
 
@@ -301,11 +312,50 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
 .actualite-dark-card:hover .actualite-dark-card-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
+}
+
+.actualite-card-media-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.actualite-dark-card:hover .actualite-card-media-overlay {
+  opacity: 1;
+}
+
+.actualite-dark-card .badge-date-top {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #FCAE1A;
+  color: #FFFFFF;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.actualite-dark-card:hover .badge-date-top {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .actualite-dark-card-body {
@@ -361,74 +411,90 @@
   transition: transform 0.2s ease;
 }
 
-/* 6ÈME EMPLACEMENT : TUILE "VOIR PLUS" HARMONISÉE */
-.actualite-dark-see-more-card {
-  background-color: #42210B;
-  border-radius: 4px;
-  padding: 2rem 1.6rem;
+/* 6ÈME EMPLACEMENT : CARTE "VOIR PLUS" CLASSIQUE COMME SUR L'ACCUEIL */
+.actualite-dark-card.card-voir-plus-action {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2.5rem 1.5rem;
   text-align: center;
-  cursor: pointer;
-  border: 1.5px dashed rgba(216, 125, 27, 0.5);
-  box-shadow: 0 6px 20px rgba(66, 33, 11, 0.12);
-  transition: all 0.25s ease;
+  background-color: #542F02;
   min-height: 420px;
   box-sizing: border-box;
 }
 
-.actualite-dark-see-more-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 34px rgba(66, 33, 11, 0.24);
-  border-color: #D87D1B;
-  border-style: solid;
-  background-color: #381C09;
-}
-
-.see-more-gold-circle {
-  width: 60px;
-  height: 60px;
+.actualite-dark-card.card-voir-plus-action .circle-plus-btn {
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #D87D1B 0%, #B86510 100%);
-  color: #FFFFFF;
+  background-color: #FCAE1A;
+  color: #542F02;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.2rem;
-  box-shadow: 0 6px 18px rgba(216, 125, 27, 0.35);
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.actualite-dark-see-more-card:hover .see-more-gold-circle {
-  transform: scale(1.1) rotate(45deg);
+.actualite-dark-card.card-voir-plus-action:hover .circle-plus-btn {
+  transform: scale(1.08);
+  background-color: #FFBA3B;
 }
 
-.see-more-gold-title {
-  color: var(--color-gold, #D87D1B);
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin: 0 0 0.6rem 0;
-}
-
-.see-more-light-desc {
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.88rem;
-  line-height: 1.55;
-  margin: 0 0 1.25rem 0;
-  max-width: 250px;
-}
-
-.see-more-gold-link {
-  color: var(--color-gold, #D87D1B);
-  font-size: 0.88rem;
+.actualite-dark-card.card-voir-plus-action .voir-plus-big-text {
+  color: #FCAE1A;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 1.65rem;
   font-weight: 700;
+  margin-top: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.actualite-dark-card.card-voir-plus-action:hover .voir-plus-big-text {
+  color: #FFD27D;
+}
+
+/* BOUTON VOIR PLUS D'ACTUALITÉS */
+.actualites-load-more-wrap {
+  margin-top: 3.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-actualites-load-more {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  border-bottom: 1.5px solid #D87D1B;
-  padding-bottom: 2px;
+  gap: 0.65rem;
+  background-color: #FCAE1A;
+  color: #2F1707;
+  border: 1.5px solid #FCAE1A;
+  padding: 0.72rem 2.4rem;
+  border-radius: 6px;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-actualites-load-more:focus,
+.btn-actualites-load-more:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-actualites-load-more:hover,
+.btn-actualites-load-more:active {
+  background-color: transparent !important;
+  color: #FCAE1A !important;
+  border-color: #FCAE1A !important;
+  transform: translateY(-2px);
+  box-shadow: none !important;
 }
 
 /* Aucun résultat */
@@ -530,32 +596,43 @@
   gap: 0.65rem;
   background-color: #FCAE1A;
   color: #2F1707;
-  border: none;
+  border: 1.5px solid #FCAE1A;
   padding: 0.68rem 1.85rem;
   border-radius: 6px;
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.015em;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(252, 174, 26, 0.3);
-  transition: all 0.25s ease;
+  box-shadow: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   margin-top: 0.5rem;
-  outline: none;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.btn-cta-partner-sleek:hover {
-  background-color: #E59D12;
-  color: #2F1707;
+.btn-cta-partner-sleek:focus,
+.btn-cta-partner-sleek:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-cta-partner-sleek:hover,
+.btn-cta-partner-sleek:active {
+  background-color: transparent !important;
+  color: #FCAE1A !important;
+  border-color: #FCAE1A !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(252, 174, 26, 0.45);
+  box-shadow: none !important;
 }
 
 .btn-cta-partner-icon {
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: inherit;
 }
 
 .btn-cta-partner-sleek:hover .btn-cta-partner-icon {
   transform: translateX(4px);
+  color: #FCAE1A;
 }
 
 .partner-cta-photo-col {

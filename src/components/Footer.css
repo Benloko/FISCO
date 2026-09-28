@@ -1,22 +1,28 @@
 .fisco-footer {
-  background-color: var(--color-bg-footer);
+  background-color: #321C01;
   color: #FFFFFF;
-  padding: 3.5rem 0 3rem;
+  padding: 4rem clamp(1.4rem, 3.2vw, 3.8rem) 3.5rem;
   margin-top: auto;
+  width: 100%;
 }
 
 .fisco-footer-inner {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .footer-grid-3 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.4fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr 1.35fr;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  width: 100%;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .footer-grid-3 {
     grid-template-columns: 1fr;
     gap: 2.2rem;

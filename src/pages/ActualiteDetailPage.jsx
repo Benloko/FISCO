@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowLeft, ArrowRight, Calendar, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowLeft, ArrowRight, Calendar, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { FISCO_ARTICLES } from '../data/actualitesData';
 import './ActualiteDetailPage.css';
 
@@ -39,10 +39,48 @@ export default function ActualiteDetailPage({
   const currentArticle =
     FISCO_ARTICLES.find((a) => a.id === Number(articleId)) || FISCO_ARTICLES[0];
 
-  // 3 autres activités récentes pour la grille du bas
+  // Toutes les autres activités récentes pour le carrousel
   const otherActivities = FISCO_ARTICLES.filter(
     (a) => a.id !== currentArticle.id
-  ).slice(0, 3);
+  );
+
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 680) {
+        setVisibleCount(1);
+      } else if (window.innerWidth <= 1080) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, otherActivities.length - visibleCount);
+
+  // Défilement automatique toutes les 3.8 secondes
+  useEffect(() => {
+    if (isPaused || maxIndex <= 0) return;
+    const interval = setInterval(() => {
+      setCarouselIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [isPaused, maxIndex]);
+
+  const handlePrevSlide = () => {
+    setCarouselIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  const handleNextSlide = () => {
+    setCarouselIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
 
   const handleSelectOther = (newId) => {
     if (onSelectArticle) {
@@ -64,7 +102,7 @@ export default function ActualiteDetailPage({
           <div className="actualite-detail-hero-overlay" />
         </div>
 
-        <div className="container actualite-detail-hero-content">
+        <div className="actualite-detail-hero-container actualite-detail-hero-content">
           <h1 className="actualite-detail-hero-title">{currentArticle.title}</h1>
           <p className="actualite-detail-hero-desc">
             {currentArticle.excerpt}
@@ -174,52 +212,108 @@ export default function ActualiteDetailPage({
         </div>
       </article>
 
-      {/* 3. AUTRES ACTIVITÉS RÉCENTES (Centrées dans le conteneur standard) */}
+      {/* 3. AUTRES ACTIVITÉS RÉCENTES (Carrousel fluide à défilement automatique) */}
       <section className="section-other-activities-wide-pro">
-        <div className="container other-activities-container">
+        <div className="other-activities-container">
           <div className="other-activities-header-wide">
-            <span className="other-activities-tag-pro">À DÉCOUVRIR AUSSI</span>
-            <h2 className="other-activities-title-wide">Autres activités récentes</h2>
+            <div className="other-activities-title-block">
+              <span className="other-activities-tag-pro">À DÉCOUVRIR AUSSI</span>
+              <h2 className="other-activities-title-wide">Autres activités récentes</h2>
+            </div>
+
+            {/* Boutons de navigation manuelle du carrousel */}
+            <div className="carousel-nav-arrows">
+              <button
+                type="button"
+                onClick={handlePrevSlide}
+                className="carousel-nav-btn"
+                aria-label="Activité précédente"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNextSlide}
+                className="carousel-nav-btn"
+                aria-label="Activité suivante"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
 
-          <div className="other-activities-grid-wide-pro">
-            {otherActivities.map((item) => (
-              <div
-                key={item.id}
-                className="other-activity-card-wide-pro"
-                onClick={() => handleSelectOther(item.id)}
-                role="button"
-                tabIndex={0}
-              >
-                {/* Vignette rectangulaire à gauche */}
-                <div className="other-activity-thumb-wide">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="other-activity-img-wide"
-                  />
-                </div>
-
-                {/* Contenu textuel à droite */}
-                <div className="other-activity-details-wide">
-                  <div className="other-activity-meta-line">
-                    <span className="other-activity-date-pill">
-                      <Calendar size={13} className="other-meta-icon" />
-                      <span>{item.date}</span>
-                    </span>
+          {/* Zone Carrousel avec track à défilement continu */}
+          <div
+            className="other-activities-carousel-viewport"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+          >
+            <div
+              className="other-activities-carousel-track"
+              style={{
+                transform: `translateX(calc(-${carouselIndex} * (100% + 1.5rem) / ${visibleCount}))`
+              }}
+            >
+              {otherActivities.map((item) => (
+                <div
+                  key={item.id}
+                  className="other-activity-card-wide-pro"
+                  style={{
+                    flex: `0 0 calc((100% - ${(visibleCount - 1) * 1.5}rem) / ${visibleCount})`
+                  }}
+                  onClick={() => handleSelectOther(item.id)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Lire l'actualité : ${item.title}`}
+                >
+                  {/* Vignette rectangulaire à gauche */}
+                  <div className="other-activity-thumb-wide">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="other-activity-img-wide"
+                      loading="lazy"
+                    />
                   </div>
 
-                  <h3 className="other-activity-card-title-wide">{item.title}</h3>
-                  <p className="other-activity-card-desc-wide">{item.excerpt}</p>
+                  {/* Contenu textuel à droite */}
+                  <div className="other-activity-details-wide">
+                    <div className="other-activity-meta-line">
+                      <span className="other-activity-date-pill">
+                        <Calendar size={13} className="other-meta-icon" />
+                        <span>{item.date ? item.date.replace(/ 2026$/, '') : ''}</span>
+                      </span>
+                    </div>
 
-                  <span className="other-activity-read-link-wide">
-                    <span>Voir les détails</span>
-                    <ArrowRight size={14} className="other-activity-arrow" />
-                  </span>
+                    <h3 className="other-activity-card-title-wide">{item.title}</h3>
+                    <p className="other-activity-card-desc-wide">{item.excerpt}</p>
+
+                    <span className="other-activity-read-link-wide">
+                      <span>Voir les détails</span>
+                      <ArrowRight size={14} className="other-activity-arrow" />
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
+          {/* Indicateurs / Points de pagination discrets */}
+          {maxIndex > 0 && (
+            <div className="other-activities-carousel-dots">
+              {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={`other-carousel-dot ${carouselIndex === idx ? 'is-active' : ''}`}
+                  onClick={() => setCarouselIndex(idx)}
+                  aria-label={`Aller au slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -42,18 +42,26 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: var(--content-padding);
 }
 
-a {
+a,
+a:focus,
+a:focus-visible,
+a:active {
   color: inherit;
   text-decoration: none;
-  outline: none;
+  outline: none !important;
+  box-shadow: none;
 }
 
-button {
+button,
+button:focus,
+button:focus-visible,
+button:active {
   font-family: inherit;
   cursor: pointer;
   border: none;
   background: none;
-  outline: none;
+  outline: none !important;
+  box-shadow: none;
   -webkit-tap-highlight-color: transparent;
 }
 

@@ -44,7 +44,7 @@ export default function AppelCandidaturePage({ setActivePage }) {
           <div className="appel-hero-overlay" />
         </div>
 
-        <div className="container appel-hero-content">
+        <div className="appel-container appel-hero-content">
           <h1 className="appel-hero-title">Appels à Candidatures</h1>
           <p className="appel-hero-desc">
             Rejoignez les résidences de création du FISCO et façonnez les œuvres de l'édition 2026 à Ouidah.
@@ -54,7 +54,7 @@ export default function AppelCandidaturePage({ setActivePage }) {
 
       {/* 2. CONTENU PRINCIPAL */}
       <main className="appel-main-body">
-        <div className="container appel-body-container">
+        <div className="appel-container appel-body-container">
           
           {/* ============================================================
               CAS A : VUE LISTE (2 CARTES SIMPLES ET COMPACTES)

@@ -36,7 +36,7 @@ export default function Footer({ setActivePage }) {
 
   return (
     <footer className="fisco-footer">
-      <div className="container fisco-footer-inner">
+      <div className="fisco-footer-inner">
         <div className="footer-grid-3">
           {/* Column 1: Contacts */}
           <div className="footer-column">
@@ -73,7 +73,7 @@ export default function Footer({ setActivePage }) {
             <ul className="footer-nav-list">
               {[
                 { id: 'accueil', label: 'Accueil' },
-                { id: 'editions', label: 'Editions' },
+                { id: 'editions', label: 'Edition' },
                 { id: 'actualites', label: 'Actualités' },
                 { id: 'apropos', label: 'A propos' },
                 { id: 'contacts', label: 'Contacts' }

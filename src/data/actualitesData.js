@@ -69,5 +69,61 @@ export const FISCO_ARTICLES = [
       "À travers le modelage de l'argile et la découverte des outils traditionnels, les jeunes participants ont découvert les fondements de la création en trois dimensions tout en étant sensibilisés à la préservation de leur patrimoine culturel.",
       "Une sélection de leurs créations est fièrement exposée dans l'espace Jeunesse du festival, illustrant avec éclat le potentiel créatif de la nouvelle génération."
     ]
+  },
+  {
+    id: 6,
+    title: 'Symposium international sur la sculpture monumentale',
+    category: 'Événement Festival',
+    date: '18 Mars 2026',
+    location: 'Esplanade des Arts — Ouidah',
+    image: '/assets/images/sculpture-bronze.jpg',
+    excerpt: 'Des sculpteurs de dix pays africains débattent des nouvelles perspectives de la sculpture urbaine contemporaine.',
+    paragraphs: [
+      "Le symposium international du FISCO a réuni plus de trente spécialistes de la sculpture monumentale pour échanger autour de l'intégration de l'art dans l'espace public africain.",
+      "Durant cette session, les intervenants ont présenté des projets novateurs de requalification urbaine par la sculpture et le recyclage créatif.",
+      "Les conclusions de ces tables rondes serviront de base à l'élaboration d'un manifeste pour la valorisation du patrimoine artistique africain."
+    ]
+  },
+  {
+    id: 7,
+    title: 'Immersion au cœur des techniques de fonte et ciselage',
+    category: 'Formation & Savoir',
+    date: '22 Mars 2026',
+    location: 'Fonderie d’Art de Ouidah',
+    image: '/assets/images/sculpture-stone.jpg',
+    excerpt: 'Démonstrations magistrales des artisans fondeurs et transmission des secrets du bronze d’art à la nouvelle génération.',
+    paragraphs: [
+      "Une journée spéciale portes ouvertes a permis aux amateurs d'art et aux étudiants en beaux-arts de découvrir les étapes délicates de la fonte à la cire perdue.",
+      "Guidés par des maîtres fondeurs reconnus, les participants ont assisté aux coulées de métal en fusion et aux opérations de ciselage de haute précision.",
+      "Cette initiative illustre la volonté du festival de préserver et dynamiser les savoir-faire métallurgiques ancestraux."
+    ]
+  },
+  {
+    id: 8,
+    title: 'Visite guidée et parcours nocturne des œuvres éclairées',
+    category: 'Exposition & Société',
+    date: '25 Mars 2026',
+    location: 'Jardins du Palais — Ouidah',
+    image: '/assets/images/museum-tour.jpg',
+    excerpt: 'Une expérience sensorielle nocturne inédite pour contempler les sculptures sous des jeux d’ombres et de lumières envoûtants.',
+    paragraphs: [
+      "À la tombée de la nuit, les jardins du festival se sont illuminés pour accueillir un parcours nocturne immersif exceptionnel.",
+      "Les jeux de lumière savamment orchestrés ont révélé sous un jour nouveau les textures du bois, la brillance du bronze et les aspérités de la pierre taillée.",
+      "Des centaines de visiteurs ont plébiscité cette scénographie féérique enrichie de performances musicales acoustiques."
+    ]
+  },
+  {
+    id: 9,
+    title: 'Atelier de sensibilisation à l’éco-sculpture et au recyclage',
+    category: 'Jeunesse & Éducation',
+    date: '28 Mars 2026',
+    location: 'Atelier Éco-Arts — Ouidah',
+    image: '/assets/images/formation-2.png',
+    excerpt: 'Comment transformer les matières résiduelles en créations d’art contemporain à forte résonance écologique.',
+    paragraphs: [
+      "Dans une démarche éco-responsable, le FISCO a organisé un grand atelier dédié à l'assemblage et à la transformation de métaux et plastiques recyclés.",
+      "Encadrés par des artistes pionniers de la récupération créative, de nombreux jeunes ont donné une seconde vie artistique à des matériaux abandonnés.",
+      "Ces œuvres écologiques seront présentées lors de la cérémonie de clôture du festival."
+    ]
   }
 ];

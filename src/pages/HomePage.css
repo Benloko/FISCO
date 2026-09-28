@@ -3,9 +3,30 @@
   width: 100%;
 }
 
-/* 1. HERO SECTION (Prend tout l'écran à la première vue - 100vh moins la barre de navigation) */
+/* 1. HERO SECTION - CAROUSEL AUTO HORIZONTAL (10s) */
 .home-hero-section {
   position: relative;
+  min-height: calc(100vh - 77px);
+  min-height: calc(100dvh - 77px);
+  width: 100%;
+  overflow: hidden;
+  background-color: #381E0A;
+}
+
+.home-hero-slider-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  min-height: calc(100vh - 77px);
+  min-height: calc(100dvh - 77px);
+  transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.home-hero-slide-item {
+  position: relative;
+  width: 50%;
+  flex: 0 0 50%;
   min-height: calc(100vh - 77px);
   min-height: calc(100dvh - 77px);
   display: flex;
@@ -14,7 +35,6 @@
   text-align: center;
   color: #FFFFFF;
   overflow: hidden;
-  background-color: #381E0A;
 }
 
 .home-hero-bg-layer {
@@ -47,6 +67,15 @@
   );
 }
 
+.home-hero-overlay-dark {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 8, 3, 0.55) 0%,
+    rgba(30, 16, 5, 0.35) 40%,
+    rgba(56, 28, 8, 0.82) 100%
+  );
+}
+
 .home-hero-content {
   position: relative;
   z-index: 2;
@@ -54,6 +83,10 @@
   flex-direction: column;
   align-items: center;
   padding: clamp(1.8rem, 3vw, 2.4rem) 1.5rem clamp(1.8rem, 2.8vw, 2.3rem);
+}
+
+.home-hero-content-candidature {
+  max-width: 980px;
 }
 
 .hero-logo-badge {
@@ -104,6 +137,34 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
+/* SLIDE 2 TYPOGRAPHIE FIDÈLE À LA CAPTURE */
+.hero-slide2-tagline {
+  font-family: var(--font-main);
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  color: #FFFFFF;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  margin: 0 0 1.25rem 0;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-slide2-title {
+  font-family: var(--font-main);
+  font-size: clamp(1.85rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  max-width: 900px;
+  line-height: 1.28;
+  margin: 0 auto 2.2rem;
+  text-align: center;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.6);
+  letter-spacing: -0.01em;
+}
+
+/* BOUTONS HERO (En savoir plus & Appel à candidature) SANS OMBRE, AVEC HOVER OUTLINE */
+.btn-en-savoir-plus-hero,
+.btn-appel-candidature-hero,
 .btn-appel-candidature {
   display: inline-flex;
   align-items: center;
@@ -115,35 +176,101 @@
   font-weight: 600;
   padding: 0.65rem 1.8rem;
   border-radius: 6px;
-  border: none;
+  border: 1.5px solid #FCAE1A;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(252, 174, 26, 0.35);
+  box-shadow: none !important;
   letter-spacing: 0.01em;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.btn-appel-candidature:hover {
-  background-color: #E59D12;
-  color: #2F1707;
+.btn-en-savoir-plus-hero:focus,
+.btn-en-savoir-plus-hero:focus-visible,
+.btn-appel-candidature-hero:focus,
+.btn-appel-candidature-hero:focus-visible,
+.btn-appel-candidature:focus,
+.btn-appel-candidature:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-en-savoir-plus-hero:hover,
+.btn-en-savoir-plus-hero:active,
+.btn-appel-candidature-hero:hover,
+.btn-appel-candidature-hero:active,
+.btn-appel-candidature:hover,
+.btn-appel-candidature:active {
+  background-color: transparent;
+  color: #FCAE1A;
+  border-color: #FCAE1A;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(252, 174, 26, 0.45);
+  box-shadow: none !important;
 }
 
-/* 2. BIENVENUE SECTION (Fidèle à Figma : aligné aux marges standards, photo portrait fidèle) */
+.btn-en-savoir-plus-hero:active,
+.btn-appel-candidature-hero:active,
+.btn-appel-candidature:active {
+  transform: scale(0.98);
+  box-shadow: none !important;
+}
+
+/* CAROUSEL DOTS (INDICATEURS DISCRETS & ÉLÉGANTS) */
+.hero-carousel-dots {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 10;
+}
+
+.hero-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.35s ease;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.hero-carousel-dot:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-carousel-dot.is-active {
+  width: 28px;
+  background-color: #FCAE1A;
+}
+
+/* 2. BIENVENUE SECTION (Espacements généreux et aligné avec les extrémités du header) */
 .section-bienvenue {
-  padding: 1rem 0 1rem;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(3.5rem, 6vw, 5.5rem);
   background-color: #FFFFFF;
+  width: 100%;
+}
+
+.bienvenue-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 clamp(1.4rem, 3.2vw, 3.8rem);
+  box-sizing: border-box;
 }
 
 .bienvenue-grid {
   display: grid;
   grid-template-columns: 1fr 280px;
-  gap: clamp(2.5rem, 4.5vw, 4.2rem);
+  gap: clamp(2.5rem, 4.5vw, 4.5rem);
   align-items: stretch;
   width: 100%;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+  margin: 0;
 }
 
 @media (max-width: 960px) {
@@ -197,7 +324,7 @@
   align-items: flex-end;
   text-align: right;
   margin-top: auto;
-  padding-top: 1.5rem;
+  padding-top: 1.8rem;
 }
 
 .director-name {
@@ -253,7 +380,7 @@
 .section-coming-soon-banner {
   width: 100%;
   padding: 0;
-  margin: 0.6rem 0 1rem;
+  margin: 2rem 0 3.5rem;
   background-color: #542F02;
 }
 
@@ -428,7 +555,7 @@
   border-radius: 0;
   overflow: hidden;
   background-color: #381E0A;
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .news-card-img {
@@ -440,62 +567,50 @@
   transition: transform 0.4s ease;
 }
 
+.news-card-media-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.news-dark-card:hover .news-card-media-overlay {
+  opacity: 1;
+}
+
 .news-dark-card:hover .news-card-img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .badge-date-top {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  left: 12px;
   background-color: #FCAE1A;
-  color: #2F1707;
+  color: #FFFFFF;
   font-family: var(--font-main);
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 0.25rem 0.7rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4px);
-  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
   pointer-events: none;
   z-index: 2;
 }
 
-.badge-location-bottom {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background-color: #FCAE1A;
-  color: #2F1707;
-  font-family: var(--font-main);
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.25rem 0.7rem;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(4px);
-  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.news-dark-card:hover .badge-date-top,
-.news-dark-card:hover .badge-location-bottom {
+.news-dark-card:hover .badge-date-top {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-}
-
-.pin-icon {
-  color: #2F1707;
 }
 
 .news-card-body {
@@ -510,15 +625,15 @@
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.35;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.65rem 0;
 }
 
 .news-card-text {
   color: #FFFFFF;
   font-family: var(--font-main);
-  font-size: 0.85rem;
-  line-height: 1.55;
-  margin: 0 0 1rem 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0 0 1.1rem 0;
   flex-grow: 1;
 }
 
@@ -526,9 +641,15 @@
   display: inline-block;
   color: #FCAE1A;
   font-family: var(--font-main);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: color 0.2s ease;
+}
+
+.news-dark-card:hover .news-card-link {
+  color: #FFC966;
 }
 
 .news-dark-card:hover .news-card-link {
