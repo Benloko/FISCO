@@ -3,10 +3,11 @@
   width: 100%;
 }
 
-/* 1. HERO SECTION (Hauteur élégante et fidèle à Figma, permettant de voir la suite sans vide) */
+/* 1. HERO SECTION (Prend tout l'écran à la première vue - 100vh moins la barre de navigation) */
 .home-hero-section {
   position: relative;
-  min-height: clamp(380px, 46vh, 460px);
+  min-height: calc(100vh - 77px);
+  min-height: calc(100dvh - 77px);
   display: flex;
   align-items: center;
   justify-content: center;
