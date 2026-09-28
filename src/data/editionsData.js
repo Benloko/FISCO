@@ -14,6 +14,7 @@ export const EDITIONS_DATA = [
     dates: '18 au 25 Novembre 2026',
     heroBg: '/assets/images/sculptor-chisel.jpg',
     theme: "Thème : L'art de la matière et la mémoire vivante : sculpter l'identité contemporaine",
+    summary: "Plus de 30 sculpteurs internationaux réunis à Ouidah pour célébrer la pierre, le bronze et le bois à travers des résidences de création en direct, des symposiums monumentaux et des ateliers de transmission pour les jeunes et les femmes.",
     split1: {
       paragraphs: [
         "Le Festival International de Sculpture Contemporaine (FISCO) déploie sa 2ème édition au cœur de la ville historique d'Ouidah. Cette édition rassemble plus de trente sculpteurs venus de divers horizons africains et internationaux, investissant les espaces publics pour célébrer la puissance expressive de la pierre, du bronze, du bois et des matériaux recyclés.",
@@ -62,6 +63,7 @@ export const EDITIONS_DATA = [
     dates: '18 au 21 Septembre 2024',
     heroBg: '/assets/images/hero-bg.jpg',
     theme: "Thème : L’éveil de la matière : genèse et rayonnement de la sculpture contemporaine",
+    summary: "L'édition inaugurale historique au Palais des Congrès de Cotonou, ayant réuni artistes pionniers et collectionneurs, avec l'initiation de plus de 400 élèves aux techniques du modelage et de la sculpture.",
     split1: {
       paragraphs: [
         "La première édition du Festival International de Sculpture de Cotonou (FISCO) a posé les fondations d'un rendez-vous artistique inédit. Réunissant sculpteurs confirmés, critiques d'art et collectionneurs au Palais des Congrès, cette édition inaugurale a révélé l'incroyable vitalité de la scène plastique béninoise.",

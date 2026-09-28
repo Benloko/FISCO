@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Mail, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const FacebookIcon = () => (
@@ -47,27 +47,7 @@ export default function Navbar({ activePage, setActivePage, onOpenPartnerModal }
 
   return (
     <header className="fisco-header">
-      {/* 1. TOPBAR SUPÉRIEURE (Inspirée du modèle pro CPLA) */}
-      <div className="header-topbar">
-        <div className="container header-topbar-inner">
-          <div className="topbar-left">
-            <span className="topbar-tag-bold">FISCO | Édition 2026</span>
-          </div>
-          <div className="topbar-right">
-            <a href="mailto:fisco2026@gmail.com" className="topbar-link">
-              <Mail size={13} className="topbar-icon" />
-              <span>fisco2026@gmail.com</span>
-            </a>
-            <span className="topbar-sep">•</span>
-            <a href="tel:+2290167578494" className="topbar-link">
-              <Phone size={13} className="topbar-icon" />
-              <span>+229 01 67 57 84 94</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. BARRE DE NAVIGATION PRINCIPALE */}
+      {/* BARRE DE NAVIGATION PRINCIPALE (Fidèle à Figma) */}
       <div className="header-main-nav">
         <div className="container fisco-header-inner">
           {/* Logo officiel */}

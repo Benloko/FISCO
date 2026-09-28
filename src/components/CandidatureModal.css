@@ -109,7 +109,7 @@
   gap: 0.4rem;
   background-color: rgba(216, 125, 27, 0.12);
   color: #D87D1B;
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -124,7 +124,7 @@
 }
 
 .candidature-modal-title {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(1.35rem, 2.2vw, 1.7rem);
   font-weight: 800;
   color: #381C08;
@@ -134,7 +134,7 @@
 }
 
 .candidature-modal-subtitle {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.9rem;
   color: #70635A;
   margin: 0;
@@ -171,7 +171,7 @@
 }
 
 .candidature-label {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.86rem;
   font-weight: 600;
   color: #381C08;
@@ -185,7 +185,7 @@
 .candidature-select,
 .candidature-textarea {
   width: 100%;
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.92rem;
   color: #2B1607;
   background-color: #FAF8F5;
@@ -233,7 +233,7 @@
   padding: 0.85rem 2rem;
   background-color: #D87D1B;
   color: #FFFFFF;
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.95rem;
   font-weight: 600;
   border: none;
@@ -263,7 +263,7 @@
 }
 
 .candidature-submit-hint {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.78rem;
   color: #8C7D73;
 }
@@ -307,7 +307,7 @@
 }
 
 .candidature-success-title {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(1.4rem, 2.4vw, 1.85rem);
   font-weight: 800;
   color: #381C08;
@@ -316,7 +316,7 @@
 }
 
 .candidature-success-desc {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.96rem;
   color: #55483F;
   line-height: 1.6;
@@ -362,7 +362,7 @@
 }
 
 .candidature-success-note {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.85rem;
   color: #8C7D73;
   margin: 0 0 1.8rem 0;
@@ -374,7 +374,7 @@
   padding: 0.8rem 2rem;
   background-color: #381C08;
   color: #FFFFFF;
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.92rem;
   font-weight: 600;
   border: none;

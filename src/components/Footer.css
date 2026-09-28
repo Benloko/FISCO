@@ -25,17 +25,22 @@
 
 .footer-col-title {
   color: #FFFFFF;
+  font-family: var(--font-main);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 1.4rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
 }
 
-.footer-title-dash {
-  color: var(--color-gold);
-  font-weight: 800;
+.footer-title-bar {
+  display: inline-block;
+  width: 26px;
+  height: 3.5px;
+  background-color: var(--color-gold);
+  border-radius: 2px;
+  flex-shrink: 0;
 }
 
 /* Column 1: Info */

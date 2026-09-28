@@ -41,7 +41,7 @@ export default function Footer({ setActivePage }) {
           {/* Column 1: Contacts */}
           <div className="footer-column">
             <h4 className="footer-col-title">
-              <span className="footer-title-dash">—</span> Contacts
+              <span className="footer-title-bar" /> Contacts
             </h4>
             <ul className="footer-info-list">
               <li className="footer-info-item">
@@ -68,7 +68,7 @@ export default function Footer({ setActivePage }) {
           {/* Column 2: Liens utiles */}
           <div className="footer-column">
             <h4 className="footer-col-title">
-              <span className="footer-title-dash">—</span> Lien utiles
+              <span className="footer-title-bar" /> Lien utiles
             </h4>
             <ul className="footer-nav-list">
               {[
@@ -94,10 +94,10 @@ export default function Footer({ setActivePage }) {
           {/* Column 3: Suivez-nous */}
           <div className="footer-column">
             <h4 className="footer-col-title">
-              <span className="footer-title-dash">—</span> Suivez-nous
+              <span className="footer-title-bar" /> Suivez-nous
             </h4>
             <p className="footer-about-text">
-              Festival international de cotonou est dédiée à la promotion du leadership féminin, au bien-être des femmes africaines et à la lutte contre les violences basées sur le genre.<sup>2</sup>
+              Festival international de cotonou est dédiée à la promotion du leadership féminin, au bien-être des femmes africaines et à la lutte contre les violences basées sur le genre.
             </p>
             <div className="footer-social-row">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Facebook">

@@ -50,41 +50,41 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
             className="btn-appel-candidature"
             onClick={handleGoToCandidature}
             type="button"
-            aria-label="Accéder à l'appel à candidature en cours"
+            aria-label="Appel à candidature"
           >
-            <span className="hero-btn-live-dot" />
-            <span>Appel à Candidature en cours</span>
-            <ArrowRight size={17} className="hero-btn-arrow" />
+            <span>Appel à candidature</span>
           </button>
         </div>
       </section>
 
       {/* 2. BIENVENUE & MOT DU DIRECTEUR (Screenshot 2) */}
       <section id="presentation-section" className="section-bienvenue">
-        <div className="container bienvenue-grid">
-          {/* Colonne gauche : Texte éditorial avec lettrine B et signature */}
-          <div className="bienvenue-text-col">
-            <div className="bienvenue-body">
-              <span className="big-dropcap">B</span>
-              <p className="bienvenue-paragraph">
-                ienvenue sur l’espace officiel du Festival International de Sculpture de Cotonou (FISCO). Notre festival est né d’une volonté affirmée : célébrer la matière brute, honorer les savoir-faire ancestraux et offrir une tribune d’exception aux créateurs contemporains africains et internationaux. À travers nos résidences de création en direct, nos expositions monumentales et nos ateliers de transmission auprès des jeunes et des femmes sculptrices, nous œuvrons à inscrire durablement la sculpture au cœur de la vie culturelle et du patrimoine de notre pays. Je vous invite à explorer nos éditions, nos actualités et à prendre part à cette aventure humaine et artistique.
-              </p>
+        <div className="container">
+          <div className="bienvenue-grid">
+            {/* Colonne gauche : Texte éditorial avec lettrine B et signature */}
+            <div className="bienvenue-text-col">
+              <div className="bienvenue-body">
+                <span className="big-dropcap">B</span>
+                <p className="bienvenue-paragraph">
+                  ienvenue Le Centre de Gestion Patrimoniale CeGPA a la grande mission d’accompagner ses clients dans la préservation, l’optimisation et la transmission de leur patrimoine. À travers des services de conseil, d’analyse et de suivi personnalisés. il œuvre à sécuriser les actifs, à améliorer leur rentabilité et à proposer des stratégies adaptée proposer des stratégies adaptée proposer des stratégies adaptée adaptées des stratégies adaptée.À travers des services de conseil, d’analyse et de suivi personnalisés, il œuvre à sécuriser les actifs, à améliorer leur rentabilité et à propose
+                </p>
+              </div>
+
+              <div className="director-signature-block">
+                <h3 className="director-name">Cyr SEHOU-HOUINDO</h3>
+                <p className="director-title">Artiste visuel, Directeur du FISCO</p>
+              </div>
             </div>
 
-            <div className="director-signature-block">
-              <h3 className="director-name">Cyr SEHOU-HOUINDO</h3>
-              <p className="director-title">Artiste visuel, Directeur du FISCO</p>
-            </div>
-          </div>
-
-          {/* Colonne droite : Photo portrait du Directeur */}
-          <div className="bienvenue-photo-col">
-            <div className="director-photo-card">
-              <img 
-                src="/assets/images/president.jpg" 
-                alt="Cyr SEHOU-HOUINDO - Directeur du FISCO" 
-                className="director-photo-img"
-              />
+            {/* Colonne droite : Photo portrait du Directeur */}
+            <div className="bienvenue-photo-col">
+              <div className="director-photo-card">
+                <img 
+                  src="/assets/images/president.jpg" 
+                  alt="Cyr SEHOU-HOUINDO - Directeur du FISCO" 
+                  className="director-photo-img"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
             </div>
 
             <h2 className="recent-news-title">
-              CÉLÉBRATION DU 8 MARS EN DIFFÉRÉ : UN ENGAGEMENT COMMUN
+              Célébration du 8 mars en différé : un engagement commun
             </h2>
 
             <p className="recent-news-text">
@@ -125,14 +125,13 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
               type="button"
               aria-label="Voir les actualités"
             >
-              <span>Voir plus</span>
-              <ArrowRight size={16} className="btn-voir-arrow" />
+              Voir plus &gt;&gt;
             </button>
           </div>
         </div>
       </section>
 
-      {/* 4. AUTRES ACTUALITÉS */}
+      {/* 4. AUTRES ACTUALITÉS (Fidèle à Figma) */}
       <section className="section-autres-actualites">
         <div className="container">
           <h2 className="autres-actualites-heading">Autres actualités</h2>
@@ -154,15 +153,19 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
                   alt="Célébration du 8 mars en différé" 
                   className="news-card-img"
                 />
+                <span className="badge-date-top">8 Mar</span>
+                <span className="badge-location-bottom">
+                  <MapPin size={13} className="pin-icon" />
+                  <span>Ouidah / Centre</span>
+                </span>
               </div>
               <div className="news-card-body">
                 <h3 className="news-card-title">Célébration du 8 mars en différé</h3>
                 <p className="news-card-text">
-                  Une exposition qui explore les blessures invisibles et le talent des sculptrices béninoises...
+                  Une exposition qui explore les blessures invisibles qui marquent œuvres...
                 </p>
                 <span className="news-card-link">
-                  <span>En savoir plus</span>
-                  <ArrowRight size={14} />
+                  En savoir plus &gt;&gt;
                 </span>
               </div>
             </div>
@@ -180,7 +183,7 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
               <div className="news-card-media">
                 <img 
                   src="/assets/images/article-featured-expo.jpg" 
-                  alt="Résidence de création monumentale" 
+                  alt="Célébration du 8 mars en différé" 
                   className="news-card-img"
                 />
                 <span className="badge-date-top">3 Mar</span>
@@ -190,13 +193,12 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
                 </span>
               </div>
               <div className="news-card-body">
-                <h3 className="news-card-title">Résidence de création monumentale</h3>
+                <h3 className="news-card-title">Célébration du 8 mars en différé</h3>
                 <p className="news-card-text">
-                  Immersion au cœur des ateliers de sculpture sur pierre et bronze en direct à Ouidah...
+                  Une exposition qui explore les blessures invisibles qui marquent œuvres...
                 </p>
                 <span className="news-card-link">
-                  <span>En savoir plus</span>
-                  <ArrowRight size={14} />
+                  En savoir plus &gt;&gt;
                 </span>
               </div>
             </div>
@@ -213,7 +215,7 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
               aria-label="Accéder à toutes les actualités"
             >
               <div className="circle-plus-btn">
-                <Plus size={42} strokeWidth={2.5} />
+                <Plus size={44} strokeWidth={3} />
               </div>
               <span className="voir-plus-big-text">Voir plus</span>
             </div>
@@ -221,14 +223,14 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
         </div>
       </section>
 
-      {/* 5. PARTENAIRE SECTION (Photos partenaires agrandies & présentées de façon pro) */}
+      {/* 5. PARTENAIRE SECTION (Fidèle à Figma : titre Partenaire, logos centrés sur fond blanc) */}
       <section className="section-partenaire">
         <div className="container">
-          <h2 className="partenaire-heading">Partenaires</h2>
+          <h2 className="partenaire-heading">Partenaire</h2>
 
           <div className="partenaire-logos-row">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="partenaire-logo-card">
+              <div key={i} className="partenaire-logo-item">
                 <img 
                   src="/assets/images/logo.png" 
                   alt="Logo Partenaire Officiel FISCO" 

@@ -70,7 +70,7 @@
   gap: 0.45rem;
   padding: 0.35rem 0.95rem;
   border-radius: 9999px;
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -95,7 +95,7 @@
 }
 
 .editions-hero-title {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   font-weight: 800;
   color: #FFFFFF;
@@ -106,7 +106,7 @@
 }
 
 .editions-hero-subtitle {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(1.05rem, 1.8vw, 1.3rem);
   font-weight: 500;
   color: #F3EDE8;
@@ -122,7 +122,7 @@
 }
 
 .editions-hero-date {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(0.9rem, 1.4vw, 1.05rem);
   font-weight: 400;
   color: #E2D7CE;
@@ -137,9 +137,264 @@
   color: #D87D1B;
 }
 
-/* 2. MAIN CONTENT CONTAINER */
+.editions-catalog-badge {
+  display: inline-block;
+  padding: 0.35rem 1.05rem;
+  border-radius: 9999px;
+  background: rgba(216, 125, 27, 0.22);
+  border: 1px solid #D87D1B;
+  color: #FFC06E;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.85rem;
+}
+
+.editions-hero-desc {
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: clamp(0.95rem, 1.35vw, 1.1rem);
+  line-height: 1.65;
+  color: #EDE4DC;
+  max-width: 700px;
+  margin: 0.85rem auto 0;
+  text-align: center;
+}
+
+/* ==========================================================
+   2. GRILLE DES CARTES D'ÉDITIONS (STYLE IDENTIQUE ACTUALITÉS)
+   ========================================================== */
+.editions-list-section {
+  padding: 1.5rem 0 3.5rem;
+  background-color: #FAF8F5;
+  width: 100%;
+}
+
+.editions-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.edition-dark-card {
+  background-color: #42210B;
+  border-radius: 6px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(66, 33, 11, 0.12);
+  border: 1px solid rgba(216, 125, 27, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  min-height: 410px;
+}
+
+.edition-dark-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(66, 33, 11, 0.25);
+  border-color: rgba(216, 125, 27, 0.55);
+}
+
+.edition-dark-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  background-color: #2F1707;
+}
+
+.edition-dark-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.edition-dark-card:hover .edition-dark-card-img {
+  transform: scale(1.05);
+}
+
+.edition-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.edition-card-badge.is-current {
+  background: linear-gradient(135deg, #F3A824 0%, #D87D1B 100%);
+  color: #241103;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(216, 125, 27, 0.4);
+}
+
+.edition-card-badge.is-retro {
+  background: rgba(36, 17, 4, 0.88);
+  color: #EDE4DC;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(4px);
+}
+
+.edition-dark-card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.edition-card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+.edition-dark-card-title {
+  color: #FFFFFF;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 1.22rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.edition-dark-card:hover .edition-dark-card-title {
+  color: #FFC06E;
+}
+
+.edition-card-year-tag {
+  background-color: rgba(216, 125, 27, 0.2);
+  color: #FFC06E;
+  border: 1px solid rgba(216, 125, 27, 0.4);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+}
+
+.edition-card-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.95rem;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.85rem;
+  color: #EDE4DC;
+}
+
+.edition-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.edition-meta-icon {
+  color: #D87D1B;
+  flex-shrink: 0;
+}
+
+.edition-dark-card-theme {
+  color: #FFC06E;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 0.85rem 0;
+  font-style: italic;
+}
+
+.edition-dark-card-excerpt {
+  color: #EDE4DC;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin: 0 0 1.25rem 0;
+  flex-grow: 1;
+  opacity: 0.95;
+}
+
+.edition-dark-card-footer {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.edition-dark-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #D87D1B;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.edition-dark-card:hover .edition-dark-card-link {
+  color: #FFC06E;
+  transform: translateX(4px);
+}
+
+.edition-arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+.edition-dark-card:hover .edition-arrow-icon {
+  transform: translateX(2px);
+}
+
+/* ==========================================================
+   3. NAVIGATION RETOUR & DÉTAIL DE L'ÉDITION
+   ========================================================== */
+.editions-back-nav {
+  margin-bottom: 1rem;
+  padding-bottom: 0.35rem;
+}
+
+.btn-back-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: none;
+  border: none;
+  color: #42210B;
+  font-size: 0.94rem;
+  font-weight: 700;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+}
+
+.btn-back-clean:hover {
+  color: #D87D1B;
+  transform: translateX(-4px);
+}
+
+.editions-bottom-all-btn-wrap {
+  margin-top: 2.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* 4. MAIN CONTENT CONTAINER (VUE DÉTAILLÉE) */
 .editions-main-section {
-  padding: clamp(3rem, 5vw, 4.8rem) 0 clamp(4rem, 6vw, 6.5rem);
+  padding: 1.25rem 0 3.5rem;
   background-color: #FFFFFF;
 }
 
@@ -151,17 +406,17 @@
 
 /* THEME TITLE */
 .editions-theme-title {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(1.35rem, 2.1vw, 1.95rem);
   font-weight: 800;
   color: #D87D1B;
   line-height: 1.38;
-  margin: 0 0 2.2rem 0;
+  margin: 0 0 1.25rem 0;
 }
 
 /* SECTION TITLES */
 .editions-section-heading {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(1.35rem, 2vw, 1.75rem);
   font-weight: 800;
   color: #381C08;
@@ -184,7 +439,7 @@
 
 /* PARAGRAPH STYLING */
 .editions-paragraph {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.98rem;
   line-height: 1.78;
   color: #333333;
@@ -328,7 +583,7 @@
 }
 
 .editions-highlight-text {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   font-weight: 700;
   color: #FFFFFF;
@@ -337,7 +592,7 @@
 }
 
 .editions-highlight-sub {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.86rem;
   color: #F0ECE9;
   line-height: 1.4;
@@ -377,7 +632,7 @@
 
 .editions-bottom-badge {
   display: inline-block;
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.8rem;
   font-weight: 700;
   color: #D87D1B;
@@ -387,7 +642,7 @@
 }
 
 .editions-bottom-title {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: clamp(1.4rem, 2.2vw, 1.9rem);
   font-weight: 800;
   color: #381C08;
@@ -396,7 +651,7 @@
 }
 
 .editions-bottom-desc {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.95rem;
   color: #6C5E55;
   margin: 0;
@@ -446,7 +701,7 @@
   justify-content: center;
   background-color: #381C08;
   color: #FFFFFF;
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.86rem;
   font-weight: 700;
   padding: 0.35rem 0.85rem;
@@ -466,7 +721,7 @@
 }
 
 .edition-simple-num {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 1.12rem;
   font-weight: 700;
   color: #381C08;
@@ -474,7 +729,7 @@
 }
 
 .edition-simple-loc {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.86rem;
   color: #7A695D;
   display: inline-flex;
@@ -494,7 +749,7 @@
 }
 
 .edition-simple-action-text {
-  font-family: var(--font-main, 'Poppins', sans-serif);
+  font-family: var(--font-main, 'Montserrat', sans-serif);
   font-size: 0.92rem;
   font-weight: 600;
   color: #D87D1B;
@@ -584,6 +839,12 @@
 
 /* RESPONSIVE BREAKPOINTS */
 @media (max-width: 880px) {
+  .editions-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    gap: 2rem;
+  }
+
   .editions-split-block {
     grid-template-columns: 1fr;
     gap: 2rem;

@@ -1,5 +1,5 @@
 /* ==========================================================
-   FISCO HEADER & NAVBAR - STYLE PRO (Inspiré CPLA)
+   FISCO HEADER & NAVBAR - STYLE FIGMA ORIGINAL
    ========================================================== */
 
 .fisco-header {
@@ -12,86 +12,19 @@
 }
 
 /* ==========================================================
-   1. TOPBAR SUPÉRIEURE (Barre d'informations Ambrée)
-   ========================================================== */
-.header-topbar {
-  background: linear-gradient(90deg, #E27928 0%, #D87D1B 50%, #C96810 100%);
-  color: #FFFFFF;
-  font-family: var(--font-main, 'Poppins', sans-serif);
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.42rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.header-topbar-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.topbar-left {
-  display: flex;
-  align-items: center;
-}
-
-.topbar-tag-bold {
-  letter-spacing: 0.04em;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #FFFFFF;
-}
-
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.topbar-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.38rem;
-  color: #FFFFFF;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-  font-weight: 500;
-}
-
-.topbar-link:hover {
-  opacity: 0.88;
-}
-
-.topbar-icon {
-  flex-shrink: 0;
-  opacity: 0.9;
-}
-
-.topbar-sep {
-  opacity: 0.45;
-  font-size: 0.7rem;
-}
-
-@media (max-width: 768px) {
-  .topbar-right {
-    display: none;
-  }
-}
-
-/* ==========================================================
-   2. BARRE DE NAVIGATION PRINCIPALE (Blanche & Moderne)
+   BARRE DE NAVIGATION PRINCIPALE (Blanche, Épurée, Sans topbar)
    ========================================================== */
 .header-main-nav {
   background-color: #FFFFFF;
   border-bottom: 1px solid #EADBCC;
-  box-shadow: 0 4px 18px rgba(56, 28, 8, 0.04);
+  box-shadow: 0 2px 14px rgba(56, 28, 8, 0.04);
 }
 
 .fisco-header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 72px;
+  height: 76px;
 }
 
 /* Logo officiel */
@@ -121,7 +54,7 @@
 }
 
 .header-logo-btn:hover .header-logo-img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Nav Desktop */
@@ -133,21 +66,22 @@
 .header-nav-list {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 2.2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* BOUTONS DU MENU : SUPPRESSION DÉFINITIVE DU RECTANGLE NOIR AU CLIC */
+/* LIENS DU MENU : TEXTE PUR SANS FOND NI PILULE */
 .header-nav-link {
-  font-family: var(--font-main, 'Poppins', sans-serif);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: #381C08;
-  padding: 0.45rem 1.05rem;
-  border-radius: 9999px;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1A1A1A;
+  padding: 0.35rem 0;
   border: none;
   background: transparent;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.2s ease;
   position: relative;
   cursor: pointer;
   outline: none !important;
@@ -164,21 +98,21 @@
 
 .header-nav-link:hover {
   color: #D87D1B;
-  background-color: rgba(216, 125, 27, 0.08);
+  background: transparent;
 }
 
-/* ÉTAT ACTIF ÉLÉGANT & DOUX (Style CPLA, sans cerclage moche) */
+/* ÉTAT ACTIF : COULEUR AMBRÉE SANS PILULE ARRONDIR */
 .header-nav-link.is-active {
   color: #D87D1B;
-  background-color: rgba(216, 125, 27, 0.12);
   font-weight: 700;
+  background: transparent;
 }
 
-/* Actions Desktop */
+/* Actions Desktop : Réseaux Sociaux & Bouton Partenaire */
 .header-actions-desktop {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.4rem;
 }
 
 .header-social-icons {
@@ -188,8 +122,8 @@
 }
 
 .social-circle-btn {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background-color: #381E0A;
   color: #FFFFFF;
@@ -214,20 +148,20 @@
   box-shadow: 0 4px 10px rgba(216, 125, 27, 0.35);
 }
 
-/* BOUTON DEVENIR PARTENAIRE (Pilule ambrée éclatante comme CPLA) */
+/* BOUTON DEVENIR PARTENAIRE (Fidèle à Figma : fond ambré, texte foncé) */
 .btn-devenir-partenaire {
-  background: linear-gradient(135deg, #F3A824 0%, #D87D1B 100%);
-  color: #FFFFFF;
-  font-family: var(--font-main, 'Poppins', sans-serif);
-  font-size: 0.9rem;
-  font-weight: 700;
-  padding: 0.6rem 1.45rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: #FCAE1A;
+  color: #2F1707;
+  font-family: var(--font-main, 'Montserrat', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.65rem 1.45rem;
+  border-radius: 8px;
+  border: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(216, 125, 27, 0.35);
+  box-shadow: 0 3px 12px rgba(252, 174, 26, 0.25);
   outline: none !important;
   -webkit-tap-highlight-color: transparent;
 }
@@ -239,16 +173,15 @@
 }
 
 .btn-devenir-partenaire:hover {
-  background: linear-gradient(135deg, #FFB638 0%, #E27928 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(216, 125, 27, 0.5);
+  background-color: #E27928;
   color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(216, 125, 27, 0.45);
 }
 
 .btn-devenir-partenaire.is-active-page {
-  background: #381C08;
+  background-color: #381C08;
   color: #FFFFFF;
-  border-color: #381C08;
   box-shadow: none;
 }
 

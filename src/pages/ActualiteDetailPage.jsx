@@ -174,9 +174,9 @@ export default function ActualiteDetailPage({
         </div>
       </article>
 
-      {/* 3. AUTRES ACTIVITÉS RÉCENTES (Même largeur que la carte Devenir Partenaire) */}
+      {/* 3. AUTRES ACTIVITÉS RÉCENTES (Centrées dans le conteneur standard) */}
       <section className="section-other-activities-wide-pro">
-        <div className="partner-cta-container-wide">
+        <div className="container other-activities-container">
           <div className="other-activities-header-wide">
             <span className="other-activities-tag-pro">À DÉCOUVRIR AUSSI</span>
             <h2 className="other-activities-title-wide">Autres activités récentes</h2>
