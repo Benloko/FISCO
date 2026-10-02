@@ -5,9 +5,9 @@
 
 export const EDITIONS_DATA = [
   {
-    id: 'edition-2',
+    id: 'edition-1',
     isCurrent: true,
-    number: '2ème Édition',
+    number: '1ère Édition',
     badge: 'Édition Actuelle',
     year: '2026',
     location: 'Ouidah & Cotonou, Bénin',
@@ -17,7 +17,7 @@ export const EDITIONS_DATA = [
     summary: "Plus de 30 sculpteurs internationaux réunis à Ouidah pour célébrer la pierre, le bronze et le bois à travers des résidences de création en direct, des symposiums monumentaux et des ateliers de transmission pour les jeunes et les femmes.",
     split1: {
       paragraphs: [
-        "Le Festival International de Sculpture Contemporaine (FISCO) déploie sa 2ème édition au cœur de la ville historique d'Ouidah. Cette édition rassemble plus de trente sculpteurs venus de divers horizons africains et internationaux, investissant les espaces publics pour célébrer la puissance expressive de la pierre, du bronze, du bois et des matériaux recyclés.",
+        "Le Festival International de Sculpture Contemporaine (FISCO) déploie sa 1ère édition au cœur de la ville historique d'Ouidah. Cette édition rassemble plus de trente sculpteurs venus de divers horizons africains et internationaux, investissant les espaces publics pour célébrer la puissance expressive de la pierre, du bronze, du bois et des matériaux recyclés.",
         "Placée sous le signe de l'innovation et du dialogue des générations, cette édition met l'accent sur les résidences de création en plein air, permettant au public, aux passionnés d'art et aux scolaires de vivre en direct l'acte créateur et d'assister à la métamorphose de blocs bruts en œuvres monumentales."
       ],
       img: '/assets/images/exhibition-building.jpg',
@@ -32,7 +32,7 @@ export const EDITIONS_DATA = [
       img: '/assets/images/museum-tour.jpg',
       imgAlt: "Visite guidée et vernissage des œuvres contemporaines"
     },
-    fullParagraph2: "La 2ème édition du FISCO confirme ainsi la place centrale d'Ouidah et du Bénin comme carrefour incontournable de la création contemporaine, tissant des ponts indélébiles entre tradition séculaire et audace contemporaine.",
+    fullParagraph2: "La 1ère édition du FISCO confirme ainsi la place centrale d'Ouidah et du Bénin comme carrefour incontournable de la création contemporaine, tissant des ponts indélébiles entre tradition séculaire et audace contemporaine.",
     expoTitle: "Symposium Monumental & Vernissage Officiel",
     expoImage: '/assets/images/culture-center.jpg',
     virtualExpoUrl: 'https://www.google.com',
@@ -49,6 +49,30 @@ export const EDITIONS_DATA = [
         image: '/assets/images/expo-gallery.jpg',
         title: 'Exposition publique sur l’esplanade des arts',
         subtitle: 'Présentation des œuvres monumentales créées en direct'
+      },
+      {
+        id: 3,
+        image: '/assets/images/culture-center.jpg',
+        title: 'Symposium & Conférences-débats',
+        subtitle: 'Rencontres artistiques et échanges autour de la matière'
+      },
+      {
+        id: 4,
+        image: '/assets/images/sculpture-bronze.jpg',
+        title: 'Coulée du bronze et fusion des métaux',
+        subtitle: 'Techniques ancestrales et innovations sculpturales'
+      },
+      {
+        id: 5,
+        image: '/assets/images/museum-tour.jpg',
+        title: 'Visites commentées & Médiation jeunesse',
+        subtitle: 'Immersion pédagogique pour les écoles et le grand public'
+      },
+      {
+        id: 6,
+        image: '/assets/images/sculpture-stone.jpg',
+        title: 'Création monumentale & Restitution publique',
+        subtitle: 'Symposium de sculpture en plein air et inauguration'
       }
     ],
     teamTitle: "Comité d'Organisation & Commissariat Artistique",

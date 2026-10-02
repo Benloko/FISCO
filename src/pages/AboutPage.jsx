@@ -45,7 +45,7 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
         </div>
 
         <div className="about-container about-hero-content">
-          <h1 className="about-hero-title">À propos du festival</h1>
+          <h1 className="about-hero-title">À propos du FISCO</h1>
           <p className="about-hero-desc">
             Célébrer la matière, éveiller les vocations et faire résonner la créativité contemporaine au cœur d’Ouidah.
           </p>
@@ -56,7 +56,6 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
       <section className="about-who-section">
         <div className="about-container">
           <div className="about-section-header">
-            <span className="about-section-subtitle">Notre Histoire & Identité</span>
             <h2 className="about-section-heading">Qui sommes-nous ?</h2>
             <div className="about-heading-bar" />
           </div>
@@ -87,7 +86,6 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
       <section className="about-accomplish-section">
         <div className="about-container">
           <div className="about-section-header">
-            <span className="about-section-subtitle">Notre Mission & Vision</span>
             <h2 className="accomplish-title">Ce que nous voulons accomplir</h2>
             <div className="about-heading-bar" />
           </div>
@@ -96,34 +94,7 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
             À travers des initiatives éducatives, des résidences artistiques et des actions de valorisation culturelle, nous œuvrons pour un écosystème créatif inclusif, audacieux et durable. Notre objectif est de faire d'Ouidah le carrefour d'excellence de la sculpture contemporaine en Afrique et dans le monde.
           </p>
 
-          {/* GRANDE IMAGE SHOWCASE */}
-          <div className="about-showcase-wrapper">
-            <div className="about-showcase-image-card">
-              <img
-                src="/assets/images/sculptor-chisel.jpg"
-                alt="Artiste sculpteur au travail - Festival FISCO"
-                className="about-showcase-img"
-              />
-              <div className="about-showcase-overlay">
-                <span className="about-showcase-label">FISCO • L’Art de sculpter la matière</span>
-              </div>
-            </div>
-
-            {/* BOUTON ÉDITION */}
-            <div className="about-editions-cta-box">
-              <button
-                className="about-editions-btn-sleek"
-                onClick={handleEditionClick}
-                type="button"
-                aria-label="Accéder à l'édition du festival"
-              >
-                <span>Découvrir l'édition</span>
-                <ArrowRight className="about-btn-arrow-sleek" size={17} />
-              </button>
-            </div>
-          </div>
-
-          {/* 4. LES CARTES EN BAS DE FAÇON PROFESSIONNELLE ET COOL */}
+          {/* 1. LES CARTES EN HAUT SOUS LE TEXTE (AVEC UNIQUEMENT LE TITRE) */}
           <div className="about-goals-grid-section">
             <div className="about-goals-cards-grid">
               {goalsList.map((goal) => (
@@ -139,10 +110,31 @@ export default function AboutPage({ setActivePage, onOpenPartnerModal }) {
                   </div>
                   <div className="about-goal-card-body">
                     <h3 className="about-goal-card-title">{goal.title}</h3>
-                    <p className="about-goal-card-desc">{goal.desc}</p>
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* 2. LA GRANDE IMAGE SHOWCASE TOUT EN BAS AVEC LE BOUTON SUR L'IMAGE */}
+          <div className="about-showcase-wrapper">
+            <div className="about-showcase-image-card">
+              <img
+                src="/assets/images/sculptor-chisel.jpg"
+                alt="Artiste sculpteur au travail - Festival FISCO"
+                className="about-showcase-img"
+              />
+              <div className="about-showcase-overlay">
+                <button
+                  className="about-editions-btn-sleek about-editions-btn-on-image"
+                  onClick={handleEditionClick}
+                  type="button"
+                  aria-label="Voir nos éditions passées"
+                >
+                  <span>Voir nos éditions passées</span>
+                  <ArrowRight className="about-btn-arrow-sleek" size={17} />
+                </button>
+              </div>
             </div>
           </div>
         </div>

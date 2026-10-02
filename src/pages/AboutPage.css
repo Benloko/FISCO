@@ -194,9 +194,9 @@
   font-weight: 400;
 }
 
-/* 4. SHOWCASE LARGE IMAGE & BUTTON */
+/* 4. SHOWCASE LARGE IMAGE (EN BAS) */
 .about-showcase-wrapper {
-  margin-top: 1rem;
+  margin-top: 0;
   width: 100%;
   max-width: 100%;
   display: flex;
@@ -233,36 +233,21 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0) 50%,
-    rgba(32, 16, 6, 0.78) 100%
+    rgba(0, 0, 0, 0) 35%,
+    rgba(25, 12, 4, 0.4) 65%,
+    rgba(25, 12, 4, 0.85) 100%
   );
   display: flex;
   align-items: flex-end;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  pointer-events: none;
+  justify-content: flex-start;
+  padding: clamp(1.8rem, 3.5vw, 2.8rem);
+  pointer-events: auto;
 }
 
-.about-showcase-label {
-  color: #FFFFFF;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(42, 20, 6, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 0.55rem 1.25rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-/* CTA BUTTON ÉDITIONS PRÉCÉDENTES */
-.about-editions-cta-box {
-  margin-top: 2.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.about-editions-btn-on-image {
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4) !important;
+  pointer-events: auto;
+  z-index: 3;
 }
 
 .about-editions-btn-sleek {
@@ -311,9 +296,10 @@
   transform: translateX(4px);
 }
 
-/* 4. LES 3 CARTES EN BAS (COOL ET PROFESSIONNEL) */
+/* 4. LES CARTES EN HAUT SOUS LE TEXTE */
 .about-goals-grid-section {
-  margin-top: 4rem;
+  margin-top: 0;
+  margin-bottom: 2.8rem;
   width: 100%;
 }
 
@@ -375,9 +361,10 @@
 }
 
 .about-goal-card-body {
-  padding: 1.6rem 1.5rem 2rem;
+  padding: 1.35rem 1.4rem 1.6rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex-grow: 1;
 }
 
@@ -385,18 +372,8 @@
   color: #381C08;
   font-size: 1.15rem;
   font-weight: 700;
-  line-height: 1.35;
-  margin: 0 0 0.85rem 0;
-}
-
-.about-goal-card-desc {
-  color: #555555;
-  font-size: 0.92rem;
-  line-height: 1.65;
-  font-weight: 400;
+  line-height: 1.4;
   margin: 0;
-  flex-grow: 1;
-  text-align: justify;
 }
 
 /* RESPONSIVE BREAKPOINTS */

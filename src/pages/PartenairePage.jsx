@@ -129,7 +129,6 @@ export default function PartenairePage() {
 
             {/* Colonne gauche : Texte & Les 2 Coordonnées */}
             <div className="partenaire-info-col">
-              <span className="partenaire-section-tag">COLLABORATION & IMPACT</span>
               <h2 className="partenaire-info-title">Rejoignez-nous dans cette aventure</h2>
               <div className="partenaire-title-bar" />
               

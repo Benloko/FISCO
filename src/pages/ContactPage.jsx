@@ -2,6 +2,32 @@ import React, { useState } from 'react';
 import { Phone, Mail, Globe, ChevronDown, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 import './ContactPage.css';
 
+const FacebookIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+  </svg>
+);
+
+const LinkedinIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 0 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.39 9.74v-8.37H5.07v8.37h2.78z"/>
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
+const YoutubeIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
+  </svg>
+);
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     email: '',
@@ -119,12 +145,11 @@ export default function ContactPage() {
             
             {/* Colonne gauche : Coordonnées et Accueil */}
             <div className="contact-info-col">
-              <span className="contact-section-tag">ÉCHANGE & ACCÈS</span>
-              <h2 className="contact-info-title">Envoyez-nous un message</h2>
+              <h2 className="contact-info-title">Nos coordonnées</h2>
               <div className="contact-title-bar" />
               
               <p className="contact-info-subtitle">
-                Remplissez le formulaire ou contactez-nous directement via nos coordonnées officielles.
+                Que ce soit pour une demande d’information, un projet de collaboration ou un simple échange artistique, notre équipe se tient à votre entière écoute pour vous accompagner.
               </p>
 
               <div className="contact-details-list">
@@ -166,13 +191,32 @@ export default function ContactPage() {
                   </div>
                 </a>
               </div>
+
+              {/* Réseaux sociaux */}
+              <div className="contact-social-section">
+                <span className="contact-social-label">Rejoignez-nous sur les réseaux</span>
+                <div className="contact-social-row">
+                  <a href="https://facebook.com" target="_blank" rel="noreferrer" className="contact-social-btn" aria-label="Facebook">
+                    <FacebookIcon />
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="contact-social-btn" aria-label="LinkedIn">
+                    <LinkedinIcon />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="contact-social-btn" aria-label="Instagram">
+                    <InstagramIcon />
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noreferrer" className="contact-social-btn" aria-label="YouTube">
+                    <YoutubeIcon />
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Colonne droite : Formulaire sans Nom ni Prénoms, bouton compact */}
             <div className="contact-form-col">
               <div className="contact-form-wrapper">
                 <div className="contact-form-header">
-                  <h3 className="contact-form-title">Formulaire de contact</h3>
+                  <h3 className="contact-form-title">Envoyez-nous un message</h3>
                   <p className="contact-form-desc">
                     Renseignez votre e-mail et votre message ci-dessous.
                   </p>

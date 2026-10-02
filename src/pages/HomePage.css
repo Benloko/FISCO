@@ -59,21 +59,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(15, 8, 3, 0.45) 0%,
-    rgba(30, 16, 5, 0.22) 40%,
-    rgba(56, 28, 8, 0.72) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(15, 8, 3, 0.45) 0%,
+      rgba(30, 16, 5, 0.22) 40%,
+      rgba(56, 28, 8, 0.72) 100%);
 }
 
 .home-hero-overlay-dark {
-  background: linear-gradient(
-    180deg,
-    rgba(15, 8, 3, 0.55) 0%,
-    rgba(30, 16, 5, 0.35) 40%,
-    rgba(56, 28, 8, 0.82) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(15, 8, 3, 0.55) 0%,
+      rgba(30, 16, 5, 0.35) 40%,
+      rgba(56, 28, 8, 0.82) 100%);
 }
 
 .home-hero-content {
@@ -137,29 +133,47 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* SLIDE 2 TYPOGRAPHIE FIDÈLE À LA CAPTURE */
-.hero-slide2-tagline {
+/* SLIDE 2 TYPOGRAPHIE ET ÉDITION EN COURS */
+.hero-edition-pill-tag,
+.hero-edition-simple-tag {
+  display: inline-block;
   font-family: var(--font-main);
-  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: #FFFFFF;
-  font-weight: 500;
-  letter-spacing: 0.015em;
-  margin: 0 0 1.25rem 0;
-  text-align: center;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 1.1rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .hero-slide2-title {
   font-family: var(--font-main);
-  font-size: clamp(1.85rem, 3.8vw, 3rem);
+  font-size: clamp(1.65rem, 3.2vw, 2.6rem);
   font-weight: 800;
   color: #FFFFFF;
-  max-width: 900px;
-  line-height: 1.28;
-  margin: 0 auto 2.2rem;
+  max-width: 940px;
+  line-height: 1.25;
+  margin: 0 auto 0.85rem;
   text-align: center;
   text-shadow: 0 3px 16px rgba(0, 0, 0, 0.6);
   letter-spacing: -0.01em;
+}
+
+.hero-slide2-tagline {
+  font-family: var(--font-main);
+  font-size: clamp(0.92rem, 1.25vw, 1.12rem);
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0 auto 1.8rem;
+  max-width: 780px;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* BOUTONS HERO (En savoir plus & Appel à candidature) SANS OMBRE, AVEC HOVER OUTLINE */
@@ -376,12 +390,22 @@
   border-radius: 0;
 }
 
-/* 3. BANNIÈRE ACTUALITÉ RÉCENTE - FULL WIDTH (Fidèle à Figma) */
+/* 3. BANNIÈRE ACTUALITÉ RÉCENTE (PLEINE LARGEUR 100% DE L'ÉCRAN) */
 .section-coming-soon-banner {
   width: 100%;
-  padding: 0;
-  margin: 2rem 0 3.5rem;
-  background-color: #542F02;
+  padding: 1.5rem 0 0;
+  margin: 1.2rem 0 3.5rem;
+  background-color: #FFFFFF;
+}
+
+.recent-news-section-title {
+  font-family: var(--font-main);
+  font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+  font-weight: 500;
+  color: #1A1A1A;
+  text-align: center;
+  margin: 0 auto 1.8rem auto;
+  width: 100%;
 }
 
 .coming-soon-banner-card {
@@ -440,19 +464,10 @@
   .coming-soon-info-col {
     padding: 2.2rem 1.5rem;
   }
-}
 
-.recent-news-badge {
-  background-color: #FCAE1A;
-  color: #2F1707;
-  font-family: var(--font-main);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 0.45rem 1.2rem;
-  border-radius: 6px;
-  box-shadow: none;
-  display: inline-block;
+  .recent-news-badge-top {
+    margin-left: 1rem;
+  }
 }
 
 .recent-news-title {
@@ -509,7 +524,8 @@
 .autres-actualites-heading {
   font-family: var(--font-main);
   font-size: clamp(1.8rem, 2.4vw, 2.2rem);
-  font-weight: 500; /* Montserrat Medium comme dans Figma */
+  font-weight: 500;
+  /* Montserrat Medium comme dans Figma */
   color: #1A1A1A;
   text-align: center;
   margin: 0 auto 1.2rem auto;
@@ -674,7 +690,8 @@
   height: 84px;
   border-radius: 50%;
   background-color: #FCAE1A;
-  color: #542F02; /* Le symbole plus en marron foncé comme dans Figma */
+  color: #542F02;
+  /* Le symbole plus en marron foncé comme dans Figma */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -702,7 +719,7 @@
 
 /* 5. PARTENAIRE (Fidèle à Figma : titre Partenaire centré, fond blanc, 4 emblèmes agrandis et espacés) */
 .section-partenaire {
-  padding: 1rem 0 2rem;
+  padding: 3.5rem 0 5rem;
   background-color: #FFFFFF;
 }
 
@@ -710,18 +727,19 @@
   text-align: center;
   font-family: var(--font-main);
   font-size: clamp(1.8rem, 2.4vw, 2.2rem);
-  font-weight: 500; /* Montserrat Medium comme dans Figma */
+  font-weight: 500;
+  /* Montserrat Medium comme dans Figma */
   color: #1A1A1A;
-  margin: 0 auto 1.2rem auto;
+  margin: 0 auto 2.5rem auto;
 }
 
 .partenaire-logos-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(4rem, 6.5vw, 6rem);
+  gap: clamp(3rem, 6vw, 5.5rem);
   flex-wrap: wrap;
-  max-width: 1140px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -738,9 +756,9 @@
 }
 
 .partenaire-emblem-img {
-  height: clamp(86px, 8.5vw, 100px);
+  height: clamp(120px, 12vw, 160px);
   width: auto;
-  max-width: 160px;
+  max-width: 220px;
   object-fit: contain;
   display: block;
 }

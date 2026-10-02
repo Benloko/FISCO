@@ -11,7 +11,7 @@ export const APPELS_CANDIDATURE = [
     location: 'Ouidah, Bénin',
     image: '/assets/images/sculptor-chisel.jpg',
     excerpt: 'Appel international pour la création d’œuvres monumentales en direct lors du festival FISCO 2026.',
-    content: `Dans le cadre de sa 2ème édition, le Festival International de Sculpture Contemporaine (FISCO) lance un appel international à candidatures à destination des artistes sculpteurs. Cette résidence de création immersive se déroulera au cœur de la ville historique d'Ouidah.
+    content: `Dans le cadre de sa 1ère édition, le Festival International de Sculpture Contemporaine (FISCO) lance un appel international à candidatures à destination des artistes sculpteurs. Cette résidence de création immersive se déroulera au cœur de la ville historique d'Ouidah.
 
 Durant le festival, les artistes sélectionnés réaliseront une œuvre monumentale en direct, au contact du public, des scolaires et des passionnés d'art contemporain.
 

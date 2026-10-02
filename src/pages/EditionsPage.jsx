@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Calendar, ArrowRight, ArrowLeft } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { EDITIONS_DATA, CURRENT_EDITION } from '../data/editionsData';
 import './EditionsPage.css';
 
@@ -18,6 +18,43 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
   const currentEdition = selectedEditionId
     ? EDITIONS_DATA.find((e) => e.id === selectedEditionId) || CURRENT_EDITION
     : null;
+
+  // Carrousel des moments forts (défilement simultané par page de 2 images)
+  const highlights = currentEdition?.highlights || [];
+  const [highlightPage, setHighlightPage] = useState(0);
+  const [visibleHighlights, setVisibleHighlights] = useState(2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 720) {
+        setVisibleHighlights(1);
+      } else {
+        setVisibleHighlights(2);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(highlights.length / visibleHighlights);
+
+  // Vitesse légèrement augmentée (2.4s) et défilement immédiat
+  useEffect(() => {
+    if (totalPages <= 1) return;
+    const interval = setInterval(() => {
+      setHighlightPage((prev) => (prev + 1) % totalPages);
+    }, 2400);
+    return () => clearInterval(interval);
+  }, [totalPages]);
+
+  const handlePrevHighlight = () => {
+    setHighlightPage((prev) => (prev <= 0 ? totalPages - 1 : prev - 1));
+  };
+
+  const handleNextHighlight = () => {
+    setHighlightPage((prev) => (prev + 1) % totalPages);
+  };
 
   // Liste des autres éditions (pour le sélecteur du bas)
   const otherEditions = currentEdition
@@ -145,10 +182,7 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
         </div>
 
         <div className="container editions-hero-content">
-          <span className={`editions-edition-status-badge ${currentEdition.isCurrent ? 'is-current' : 'is-archive'}`}>
-            {currentEdition.badge}
-          </span>
-          <h1 className="editions-hero-title">{currentEdition.number}</h1>
+          <h1 className="editions-hero-title">{currentEdition.number} - {currentEdition.year}</h1>
           <p className="editions-hero-subtitle">
             <MapPin size={16} className="editions-pin-icon" />
             {currentEdition.location}
@@ -181,51 +215,48 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
             {currentEdition.theme}
           </h2>
 
-          {/* Bloc 1 : Texte à gauche + Photo à droite */}
-          <div className="editions-split-block">
-            <div className="editions-split-text">
-              {currentEdition.split1.paragraphs.map((p, idx) => (
-                <p key={idx} className="editions-paragraph">
-                  {p}
-                </p>
-              ))}
-            </div>
-            <div className="editions-split-img-box">
+          {/* Corps de l'article façon blog éditorial avec texte fluide enveloppant */}
+          <div className="editions-article-body-flow">
+            {/* 1ère Photo intégrée à droite */}
+            <div className="editions-flow-media-right">
               <img
                 src={currentEdition.split1.img}
                 alt={currentEdition.split1.imgAlt}
-                className="editions-split-img"
+                className="editions-flow-img"
               />
             </div>
-          </div>
 
-          {/* Paragraphe pleine largeur */}
-          <p className="editions-paragraph">
-            {currentEdition.fullParagraph1}
-          </p>
+            {currentEdition.split1.paragraphs.map((p, idx) => (
+              <p key={`p1-${idx}`} className="editions-paragraph">
+                {p}
+              </p>
+            ))}
 
-          {/* Bloc 2 : Photo à gauche + Texte à droite */}
-          <div className="editions-split-block reverse-on-desktop">
-            <div className="editions-split-img-box">
+            <p className="editions-paragraph">
+              {currentEdition.fullParagraph1}
+            </p>
+
+            {/* 2ème Photo intégrée à gauche */}
+            <div className="editions-flow-media-left">
               <img
                 src={currentEdition.split2.img}
                 alt={currentEdition.split2.imgAlt}
-                className="editions-split-img"
+                className="editions-flow-img"
               />
             </div>
-            <div className="editions-split-text">
-              {currentEdition.split2.paragraphs.map((p, idx) => (
-                <p key={idx} className="editions-paragraph">
-                  {p}
-                </p>
-              ))}
-            </div>
-          </div>
 
-          {/* Paragraphe pleine largeur de conclusion */}
-          <p className="editions-paragraph">
-            {currentEdition.fullParagraph2}
-          </p>
+            {currentEdition.split2.paragraphs.map((p, idx) => (
+              <p key={`p2-${idx}`} className="editions-paragraph">
+                {p}
+              </p>
+            ))}
+
+            <p className="editions-paragraph">
+              {currentEdition.fullParagraph2}
+            </p>
+
+            <div style={{ clear: 'both' }} />
+          </div>
 
           {/* Section 3 : Nom de l'exposition & Visite Virtuelle VR */}
           <h3 className="editions-section-heading">{currentEdition.expoTitle}</h3>
@@ -253,36 +284,78 @@ export default function EditionsPage({ setActivePage, onOpenPartnerModal, initia
             </div>
           </a>
 
-          {/* Section 4 : Moments forts du festival */}
-          <h3 className="editions-section-heading">Moments forts du festival</h3>
-          <div className="editions-highlights-grid">
-            {currentEdition.highlights.map((highlight) => (
-              <div key={highlight.id} className="editions-highlight-card">
-                <img
-                  src={highlight.image}
-                  alt={highlight.title}
-                  className="editions-highlight-img"
-                />
-                <div className="editions-highlight-overlay">
-                  <div className="editions-highlight-content">
-                    <span className="editions-highlight-text">{highlight.title}</span>
-                    {highlight.subtitle && (
-                      <span className="editions-highlight-sub">{highlight.subtitle}</span>
-                    )}
-                  </div>
-                </div>
+          {/* Section 4 : Moments forts du festival (Carrousel Défilant Automatique par Paires) */}
+          <div className="editions-highlights-header">
+            <h3 className="editions-section-heading">Moments forts du festival</h3>
+            {totalPages > 1 && (
+              <div className="editions-carousel-nav-arrows">
+                <button
+                  type="button"
+                  className="carousel-arrow-btn"
+                  onClick={handlePrevHighlight}
+                  aria-label="Moments précédents"
+                >
+                  <ChevronLeft size={19} />
+                </button>
+                <button
+                  type="button"
+                  className="carousel-arrow-btn"
+                  onClick={handleNextHighlight}
+                  aria-label="Moments suivants"
+                >
+                  <ChevronRight size={19} />
+                </button>
               </div>
-            ))}
+            )}
           </div>
 
-          {/* Section 5 : Equipe */}
-          <h3 className="editions-section-heading">{currentEdition.teamTitle}</h3>
-          <div className="editions-team-box">
-            <img
-              src={currentEdition.teamImage}
-              alt={currentEdition.teamAlt}
-              className="editions-team-img"
-            />
+          <div className="editions-highlights-carousel-wrapper">
+            <div
+              className="editions-highlights-track"
+              style={{
+                transform: `translateX(-${highlightPage * 100}%)`
+              }}
+            >
+              {highlights.map((highlight) => (
+                <div
+                  key={highlight.id}
+                  className="editions-highlight-slide"
+                  style={{ flex: `0 0 ${100 / visibleHighlights}%` }}
+                >
+                  <div className="editions-highlight-card">
+                    <img
+                      src={highlight.image}
+                      alt={highlight.title}
+                      className="editions-highlight-img"
+                      loading="lazy"
+                    />
+                    <div className="editions-highlight-overlay">
+                      <div className="editions-highlight-content">
+                        <span className="editions-highlight-text">{highlight.title}</span>
+                        {highlight.subtitle && (
+                          <span className="editions-highlight-sub">{highlight.subtitle}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Dots de pagination par page */}
+            {totalPages > 1 && (
+              <div className="editions-carousel-dots">
+                {Array.from({ length: totalPages }).map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`editions-dot ${highlightPage === idx ? 'is-active' : ''}`}
+                    onClick={() => setHighlightPage(idx)}
+                    aria-label={`Aller au groupe ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
         </div>

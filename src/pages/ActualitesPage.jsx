@@ -248,7 +248,6 @@ export default function ActualitesPage({ setActivePage, onSelectArticle, onOpenP
         <div className="partner-cta-container-wide">
           <div className="partner-cta-card-pro">
             <div className="partner-cta-text-col">
-              <span className="partner-cta-tag">MÉCÉNAT & IMPACT</span>
               <h2 className="partner-cta-title">
                 Pourquoi devenir partenaire ?
               </h2>

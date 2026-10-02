@@ -5,18 +5,18 @@ import './HomePage.css';
 export default function HomePage({ setActivePage, onOpenPartnerModal }) {
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
-  // Défilement automatique toutes les 10 secondes (10s)
+  // Défilement automatique plus rapide (4 secondes)
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
-    }, 10000);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
-  const scrollToPresentation = () => {
-    const el = document.getElementById('presentation-section');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  const handleGoToAbout = () => {
+    if (setActivePage) {
+      setActivePage('apropos');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -29,7 +29,7 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
 
   return (
     <div className="home-exact-page fade-in">
-      {/* 1. HERO SECTION - CAROUSEL AUTO HORIZONTAL 2 SLIDES (10s) */}
+      {/* 1. HERO SECTION - CAROUSEL AUTO HORIZONTAL 2 SLIDES (4s) */}
       <section className="home-hero-section">
         <div 
           className="home-hero-slider-track"
@@ -63,7 +63,7 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
 
               <button 
                 className="btn-en-savoir-plus-hero"
-                onClick={scrollToPresentation}
+                onClick={handleGoToAbout}
                 type="button"
                 aria-label="En savoir plus"
               >
@@ -72,33 +72,37 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
             </div>
           </div>
 
-          {/* SLIDE 2 : Donnez vie à vos œuvres + Candidatez + Appel à candidature */}
+          {/* SLIDE 2 : ÉDITION EN COURS + CANDIDATER AUX APPELS */}
           <div className="home-hero-slide-item">
             <div className="home-hero-bg-layer">
               <img 
                 src="/assets/images/sculptor-chisel.jpg" 
-                alt="Candidatez au Festival International de Sculpture de Cotonou" 
+                alt="1ère Édition du FISCO 2026 - Ouidah & Cotonou" 
                 className="home-hero-bg-img"
               />
               <div className="home-hero-overlay home-hero-overlay-dark" />
             </div>
 
             <div className="container home-hero-content home-hero-content-candidature">
-              <p className="hero-slide2-tagline">
-                Donnez vie à vos œuvres au cœur de l'Afrique
-              </p>
+              <div className="hero-edition-simple-tag">
+                1ÈRE ÉDITION • 18 AU 25 NOVEMBRE 2026
+              </div>
 
               <h2 className="hero-slide2-title">
-                Candidatez au Festival International de Sculpture de Cotonou.
+                L'art de la matière et la mémoire vivante : sculpter l'identité contemporaine
               </h2>
+
+              <p className="hero-slide2-tagline">
+                Ouidah & Cotonou, Bénin — Résidences de création & Symposium monumental
+              </p>
 
               <button 
                 className="btn-appel-candidature-hero"
                 onClick={handleGoToCandidature}
                 type="button"
-                aria-label="Appel à candidature"
+                aria-label="Candidater aux appels"
               >
-                <span>Appel à candidature</span>
+                <span>Candidater aux appels</span>
               </button>
             </div>
           </div>
@@ -154,8 +158,12 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
         </div>
       </section>
 
-      {/* 3. BANNIÈRE ACTUALITÉ RÉCENTE (Screenshot 3) */}
+      {/* 3. BANNIÈRE ACTUALITÉ RÉCENTE (PLEINE LARGEUR 100%) */}
       <section className="section-coming-soon-banner">
+        <h2 className="recent-news-section-title">
+          Actualité récente
+        </h2>
+
         <div className="coming-soon-banner-card">
           {/* Gauche : Affiche Officielle sans coupure */}
           <div className="coming-soon-poster-col">
@@ -168,26 +176,23 @@ export default function HomePage({ setActivePage, onOpenPartnerModal }) {
 
           {/* Droite : Informations de l'actualité récente */}
           <div className="coming-soon-info-col">
-            <div className="recent-news-badge">
-              Actualité récente
-            </div>
-
-            <h2 className="recent-news-title">
+            <h3 className="recent-news-title">
               Célébration du 8 mars en différé : un engagement commun
-            </h2>
+            </h3>
 
             <p className="recent-news-text">
               Le FISCO met à l'honneur les créatrices et sculptrices contemporaines à travers une programmation artistique engagée. Découvrez les ateliers de transmission, les démonstrations de taille directe et les expositions thématiques qui célèbrent la place essentielle des femmes dans les arts plastiques.
             </p>
 
+            {/* Bouton Voir plus qui ouvre directement la page de détail de cette actualité */}
             <button 
               className="btn-voir-plus-link"
               onClick={() => {
-                setActivePage('actualites');
+                setActivePage('actualite-detail', 1);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               type="button"
-              aria-label="Voir les actualités"
+              aria-label="Voir les détails de l'actualité récente"
             >
               Voir plus &gt;&gt;
             </button>

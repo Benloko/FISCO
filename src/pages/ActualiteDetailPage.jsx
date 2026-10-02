@@ -217,8 +217,7 @@ export default function ActualiteDetailPage({
         <div className="other-activities-container">
           <div className="other-activities-header-wide">
             <div className="other-activities-title-block">
-              <span className="other-activities-tag-pro">À DÉCOUVRIR AUSSI</span>
-              <h2 className="other-activities-title-wide">Autres activités récentes</h2>
+              <h2 className="other-activities-title-wide">Autres actualités récentes</h2>
             </div>
 
             {/* Boutons de navigation manuelle du carrousel */}
@@ -322,7 +321,6 @@ export default function ActualiteDetailPage({
         <div className="partner-cta-container-wide">
           <div className="partner-cta-card-pro">
             <div className="partner-cta-text-col">
-              <span className="partner-cta-tag">MÉCÉNAT & IMPACT</span>
               <h2 className="partner-cta-title">
                 Pourquoi devenir partenaire ?
               </h2>
